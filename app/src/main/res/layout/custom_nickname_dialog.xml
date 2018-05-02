@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarPin"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/ApplicationGreenTheme"
+        android:elevation="4dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat"
+        app:theme="@style/ToolbarTheme">
+
+        <ImageView
+            android:id="@+id/tbLogo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_horizontal"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/ActivityHorizontalExtraCustomMargin"
+        android:paddingRight="@dimen/ActivityHorizontalExtraCustomMargin"
+        android:paddingBottom="@dimen/ActivityVerticalCustomMargin"
+        android:paddingTop="@dimen/ActivityVerticalCustomMargin">
+
+        <LinearLayout
+            android:id="@+id/ltMainContent"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvPinDialogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/title_nickname"
+                android:textColor="@color/TextColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/tvContentPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_pick_a_nickname"/>
+
+            <EditText
+                android:id="@+id/etNicknameInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:maxLength="20"
+                android:hint="@string/hint_nickname"
+                android:width="200dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_gravity="center">
+                <!--<requestFocus />-->
+            </EditText>
+
+            <TextView
+                android:id="@+id/feedbackLabel"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="12sp"
+                android:textColor="@color/red_deny_button"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                android:text="@string/label_nickname_already_exists"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ltLogoutMessage"
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/ActivityVerticalCustomMargin"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnNicknameCancel"
+                android:text="@string/btn_cancel"
+                android:background="@drawable/btn_effect_ripple_gray"
+                android:textColor="@color/MainTitleTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnNicknameAccept"
+                android:text="@string/btn_accept"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/btn_effect_ripple_green"
+                android:textColor="@color/ActivityWhiteBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,333 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_home"
+    tools:context="com.globalpaysolutions.yovendorecarga.Perfil">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        >
+        <!--TOOLBAR-->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarProf"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/ApplicationGreenTheme"
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat"
+            app:theme="@style/ToolbarTheme"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <!--    PADRE DE TODAS  -->
+            <RelativeLayout
+                android:id="@+id/linearParent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="180dp"
+                    android:orientation="vertical"
+                    android:paddingEnd="22dp"
+                    android:paddingLeft="22dp"
+                    android:paddingRight="22dp"
+                    android:paddingStart="22dp"
+                    android:paddingBottom="32dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/ActivityWhiteBackground"
+                        android:orientation="vertical"
+                        android:paddingEnd="@dimen/activity_horizontal_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:paddingTop="32dp"
+                        android:paddingBottom="32dp">
+
+                        <!--    NOMBRE   -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_profile_full_name"
+                            android:textColor="@color/SubtitleTextColor"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/tvFullname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hermenegildiano Corleo Benavides Hernandez"
+                            android:textColor="@color/MainTitleTextColor"
+                            android:textSize="16sp"/>
+
+                        <!--    CORREO ELECTRONICO   -->
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/hint_email"
+                            android:textColor="@color/SubtitleTextColor"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/MainTitleTextColor"
+                            android:textSize="16sp"/>
+
+                        <!--    TELEFONO  -->
+
+                        <TextView
+                            android:id="@+id/tvPhoneLabel"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/label_phone"
+                            android:textColor="@color/SubtitleTextColor"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/tvPhone"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/MainTitleTextColor"
+                            android:textSize="16sp"/>
+
+                        <!--    ULTIMA RECARGA  -->
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/label_profile_last_sale"
+                            android:textColor="@color/SubtitleTextColor"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/tvLastSale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lun. 30 de mayo; 09:43 PM."
+                            android:textColor="@color/MainTitleTextColor"
+                            android:textSize="16sp"/>
+
+
+                        <!--    FACEBOOK    -->
+
+                        <LinearLayout
+                            android:id="@+id/fbpanelLoggedIn"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/ActivityVerticalExtraCustomMargin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_profile_share"
+                                android:textColor="@color/SubtitleTextColor"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_profile_share_to_friends"
+                                android:textColor="@color/MainTitleTextColor"
+                                android:textSize="16sp"/>
+
+                            <com.facebook.share.widget.ShareButton
+                                android:id="@+id/btnShareFacebook"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+                            <CheckBox
+                                android:id="@+id/chckTopupShare"
+                                android:layout_marginTop="@dimen/activity_vertical_margin"
+                                android:text="@string/chk_label_share_topup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_marginTop="@dimen/ActivityVerticalExtraCustomMargin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_facebook_fanpage"
+                                android:textColor="@color/SubtitleTextColor"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_facebook_like_yvr"
+                                android:textColor="@color/MainTitleTextColor"
+                                android:textSize="16sp"/>
+
+                            <com.facebook.share.widget.LikeView
+                                android:id="@+id/btnLikeFacebook"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/fbpanelLoggedOut"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/ActivityVerticalExtraCustomMargin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_profile_facebook"
+                                android:textColor="@color/SubtitleTextColor"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/tvAssociateFacebook"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible"
+                                android:text="@string/label_profile_associate_facebook"
+                                android:textColor="@color/MainTitleTextColor"
+                                android:textSize="16sp"/>
+
+                            <com.facebook.login.widget.LoginButton
+                                android:id="@+id/btnLoginFacebook"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="@dimen/ActivityVerticalExtraCustomMargin"
+
+                                android:text="@string/label_associate_facebook"/>
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_alignParentTop="true">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="@color/PressedGreenTheme"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="horizontal"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:weightSum="7">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_horizontal">
+
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        android:id="@+id/ivProfilePicture"
+                                        android:layout_width="120dp"
+                                        android:layout_height="120dp"
+                                        android:layout_alignParentBottom="true"/>
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="180dp"
+                                android:layout_weight="4"
+                                android:paddingEnd="8dp"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:paddingStart="8dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginBottom="8dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tvName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/ActivityWhiteBackground"
+                                        android:textSize="24sp"
+                                        android:textStyle="bold"/>
+
+                                    <TextView
+                                        android:id="@+id/tvNick"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/ActivityWhiteBackground"
+                                        android:textSize="20sp"/>
+
+                                    <TextView
+                                        android:id="@+id/tvVendorCode"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/label_profile_vendorcode"
+                                        android:textColor="@color/ActivityWhiteBackground"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"/>
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </FrameLayout>
+
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

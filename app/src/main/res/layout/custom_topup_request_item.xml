@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingBottom="8dp"
+    >
+
+    <LinearLayout
+        android:weightSum="20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/SuperUltraLightGray"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="13"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="6dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="6dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUserNickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                tools:text="NicknameEjemplo"
+                android:maxLines="1"
+                android:maxLength="25"
+                android:textColor="@color/material_gray_900"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/tvSalePhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                tools:text="7089-5329"
+                android:textColor="@color/material_gray_900"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tvSaleAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSalePhoneNumber"
+                tools:text="CLARO - $10.00"
+                android:textColor="@color/material_gray_900"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tvSaleDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:layout_below="@id/tvSaleAmount"
+                tools:text="May. 5 - 2:34 PM"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingRight="8dp"
+            android:orientation="vertical"
+            android:gravity="center" >
+
+            <Button
+                android:background="@drawable/btn_effect_ripple_green"
+                android:textColor="@color/ActivityWhiteBackground"
+                android:id="@+id/btnAcceptTopup"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp"
+                android:layout_height="32dp"
+                android:text="@string/btn_accept"
+                />
+
+            <Button
+                android:background="@drawable/btn_effect_ripple_red"
+                android:textColor="@color/ActivityWhiteBackground"
+                android:id="@+id/btnDenyTopup"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="32dp"
+                android:text="@string/btn_deny"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/UltraLightGray"/>
+
+
+</LinearLayout>

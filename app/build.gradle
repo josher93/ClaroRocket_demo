@@ -1,0 +1,93 @@
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin' version '0.7.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '27.0.3'
+
+    //Clases para Http de apache
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.globalpaysolutions.yovendorecarga"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 73
+        versionName "2.3"
+
+        //Multi DEX
+        multiDexEnabled true
+
+        manifestPlaceholders = [onesignal_app_id               : "85d2fc7b-04f4-4aaf-8ebc-8d719bcadde0",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "REMOTE"]
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+    compileOptions.encoding = 'ISO-8859-1'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation files('libs/common-lang3.jar')
+
+    //Showcase Intructions
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:preference-v7:25.3.1'
+    implementation 'com.android.support:design:25.3.1'
+    implementation 'com.android.support:support-v4:25.3.1'
+    implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
+    //Google Cloud Messaging
+    implementation 'com.google.android.gms:play-services-gcm:10.2.0'
+    //Location
+    implementation 'com.google.android.gms:play-services:10.2.0'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    //GeoFire
+    implementation 'com.firebase:geofire-android:2.1.1'
+    implementation files('libs/LiveChatWindow.jar')
+
+    //Facebook SDK
+    implementation('com.facebook.android:facebook-android-sdk:[4,5)')
+
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //OneSignal
+    implementation 'com.onesignal:OneSignal:[3.6.5, 3.99.99]'
+
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+}
+
+apply plugin: 'com.google.gms.google-services'

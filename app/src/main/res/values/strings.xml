@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Yo Vendo RECARGA</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_reolad">Recargar</string>
+    <string name="title_activity_menu_pin">PIN de seguridad</string>
+    <string name="title_activity_notificaciones">Notificaciones</string>
+    <string name="title_activity_deposito_bancario">Depósito Bancario</string>
+    <string name="title_activity_sales_history">Historial</string>
+    <string name="title_activity_chat_soporte">Chat YVR - Soporte</string>
+    <string name="label_vendor_code">Código de Vendedor: %1$d</string>
+    <string name="title_activity_referido">Invitar</string>
+    <string name="text_send">Enviar</string>
+    <string name="label_or">Ó</string>
+
+    <!--Items de menú para el Drawer de Navegación-->
+    <string-array name="drawer_options">
+        <item>Inicio</item>
+        <item>Perfil de la Cuenta</item>
+        <item>Historial de Ventas</item>
+        <item>Solicitar Saldo YVR.com</item>
+        <item>Alertas y Noficaciones</item>
+        <item>Información General</item>
+    </string-array>
+
+    <!--Iconos de menú para el Drawer de Navegación-->
+    <array name="drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--    STRINGS DE TEXTOS Y OTROS DE INTERFAZ -->
+    <string name="deposit_dending_deposit">Enviando validación...</string>
+    <string name="refer_sending_invitation">Enviando invitación...</string>
+    <string name="hint_email">Correo Electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_current_pass">Contraseña Actual:</string>
+    <string name="hint_new_pass">Nueva Contraseña:</string>
+    <string name="hint_repeat_pass">Repetir Nueva Contraseña:</string>
+    <string name="remember_email_check">Recordar correo electrónico</string>
+
+    <!--Error-->
+    <string name="dialog_password_update_error_title">¡LO SENTIMOS!</string>
+    <string name="we_are_sorry_msg_title">LO SENTIMOS</string>
+    <string name="dialog_error_topup_content">Vuelve a iniciar sesión e inténtalo de nuevo</string>
+    <string name="try_again_message">Inténtelo nuevamente</string>
+    <string name="something_went_wrong">Algo ha salido mal</string>
+    <string name="something_went_wrong_try_again">Algo ha salido mal, inténtelo nuevamente</string>
+    <string name="check_history_title">REVISA EL HISTORIAL</string>
+    <string name="check_history_advice_ln1">Revisa el historial de recargas</string>
+    <string name="check_history_advice_ln2">y verifica si se efectuó la recarga.</string>
+    <string name="deposit_error">ALGO HA SALIDO MAL...</string>
+    <string name="insufficent_balance_title">INSUFICIENTE SALDO PARA VENDER</string>
+    <string name="insufficent_balance_ln1">No tienes suficiente saldo para realizar la recarga.</string>
+    <string name="insufficent_balance_ln2">Haz un depósito bancario para añadir saldo a tu cuenta.</string>
+    <string name="invitation_error">ALGO HA SALIDO MAL...</string>
+
+    <!--Deposito Bancario-->
+    <string name="deposit_error_line1">Tu depósito no pudo ser procesado. Inténtalo más tarde.</string>
+    <string name="deposit_success_line1">Información enviada con éxito, muy pronto recibirás un correo con el estado de tu depósito.</string>
+
+    <!--Coneccion a Internet-->
+    <string name="internet_connecttion_title">ERROR DE CONEXIÓN</string>
+    <string name="internet_connecttion_msg">Algo ha salido mal, revisa tu conexión a internet.</string>
+
+
+    <!--Perfil incompleto-->
+    <string name="title_incomplete_profile_error">PERFIL INCOMPLETO</string>
+    <string name="content_incomplete_profile_error">Completa tu perfil en <u>www.yovendorecarga.com</u> para ingresar a la App.</string>
+
+    <!--Invitacion-->
+    <string name="invitation_sent_line1">La invitación se envió con éxito. Recibirás tu saldo gratis cuando acepten tu invitación a YoVendoRECARGA.</string>
+    <string name="invitation_error_line1">Tu invitación no se pudo enviar. Inténtalo más tarde.</string>
+    <string name="invitation_email_already_invited_title">YA HA SIDO INVITADO</string>
+    <string name="invitation_email_already_invited_message">La invitación ya ha sido enviada a esta dirección de correo. Intenta con una diferente.</string>
+
+    <!--Exito-->
+    <string name="succeed_title">¡ÉXITO!</string>
+    <string name="password_changed_success">La contraseña ha sido cambiada exitosamente.</string>
+    <string name="request_balance_success">¡HAS SOLICITADO SALDO EXITOSAMENTE!</string>
+    <string name="request_balance_success_message">Haz solicitado saldo al Master exitosamente.</string>
+    <string name="request_balance_success_message_master_name">Haz solicitado saldo exitosamente a</string>
+    <string name="deposit_success">¡INFORMACIÓN ENVIADA!</string>
+    <string name="invitation_success">¡INVITACIÓN ENVIADA!</string>
+    <string name="expired_session">SESIÓN EXPIRADA</string>
+    <string name="dialog_succeed_topoup_title">¡RECARGA EXITOSA!</string>
+    <string name="dialog_succeed_topup_content">Recarga se ha enviado al número: </string>
+    <string name="dialog_simple_succeed_topup_content">¡Recarga realizada exitosamente!</string>
+
+    <!-- VALIDATIONS -->
+    <string name="validation_required">Requerido</string>
+    <string name="validation_not_valid_email">Email no válido</string>
+    <string name="validation_not_valid_phone">Teléfono no válido</string>
+    <string name="validation_not_valid_amount">No es un monto válido</string>
+    <string name="validation_not_valid_voucher">Comprobante no válido</string>
+    <string name="validation_no_valid_name">Debe escribir un nombre válido</string>
+    <string name="validation_no_valid_username">Debe escribir un nombre de usuario válido</string>
+    <string name="validation_required_operator">Debe seleccionar un operador</string>
+    <string name="validation_required_date">Debe seleccionar una fecha</string>
+    <string name="toast_valid_phone">Debe escribir un número válido</string>
+    <string name="toast_not_valid_phone">No es un teléfono válido</string>
+    <string name="diff_password_required">Nueva contraseña debe ser diferente</string>
+    <string name="password_not_match">Las contraseñas no coinciden</string>
+    <string name="pin_not_match">Los pines de seguridad no coinciden</string>
+    <string name="deposit_date_invalid">La fecha de depósito no debe ser mayor a la fecha actual</string>
+    <string name="no_internet_connection">No está conectado a internet.</string>
+    <string name="validation_not_valid_minimum">El comprobante debe tener %1$d dígitos como mínimo</string>
+
+    <!--Other-->
+    <string name="terms_and_conditions"><u>Términos y Condiciones</u>.</string>
+    <string name="terms_and_conditions_title">TÉRMINOS Y CONDICIONES</string>
+    <string name="privacy_and_cookies_title">POLÍTICAS DE PRIVACIDAD Y COOKIES</string>
+    <string name="terms_and_conditions_first_subtitle">Generalidades</string>
+    <string name="terms_and_conditions_second_subtitle">Inscripción</string>
+    <string name="terms_and_conditions_generalities">Este contrato tiene la finalidad de establecer los Acuerdos y Condiciones del sitio web y de los servicios ofrecidos por Paga-Todo.com, propiedad de la sociedad Global Pay Solutions S.A., una sociedad constituida de conformidad a las leyes de la República de Panamá, o sus afiliadas, o de los diversos sitios web redireccionados a este desde los diversos ccTLD (Country Code Top Level Domain), al que en adelante será referido como “Paga-Todo”.</string>
+    <string name="terms_and_conitions_subscription">No pueden registrarse ni usar los servicios proporcionados por Paga-Todo los menores de 18 años de edad, los sordos que no pueden darse a entender de manera indudable, los Usuarios suspendidos o cancelados de Paga-Todo. Y en general solo pueden registrarse todas las personas naturales que tengan capacidad para adquirir derechos y contraer obligaciones por sí mismas, sin necesidad de autorización de otras.</string>
+    <string name="forgot_password"><u>¿Has olvidado tu contraseña?</u>.</string>
+    <string name="label_create_account"><u>CREA TU CUENTA</u></string>
+    <string name="politics"><u>Políticas de Privacidad</u></string>
+    <string name="not_setted">Sin establecer...</string>
+    <string name="dialog_logging_in">Iniciando sesión...</string>
+    <string name="phone_number_edittext_hint"><font size="13">NÚMERO CELULAR</font></string>
+    <!-- <string name="phone_number_edittext_hint">NÚMERO CELULAR</string>-->
+    <!--<string name="phone_number_edittext_hint">NÚMERO CELULAR</string>-->
+    <string name="allow_permission_phone_state_dialog">Debe permitir el acceso al estado del teléfono para asociar el dispositivo a su cuenta.</string>
+    <string name="avialable_balance_label">Saldo %1$s</string>
+    <string name="avialable_balance_label_generic">Saldo para Vender</string>
+    <string name="btn_login">INICIAR SESIÓN</string>
+    <string name="btn_register">REGISTRARSE</string>
+    <string name="btn_accept">ACEPTAR</string>
+    <string name="btn_deny">DENEGAR</string>
+    <string name="btn_cancel">CANCELAR</string>
+    <string name="label_refreshing_wait">Refrescando, espere...</string>
+
+    <!--Navigation Drawer Items-->
+    <string name="drawer_home_item">Inicio</string>
+    <string name="drawer_profile_item">Mi Cuenta</string>
+    <string name="drawer_history_item">Historial de Ventas</string>
+    <string name="drawer_balance_item">Solicitar Saldo</string>
+    <string name="drawer_notifications_item">Alertas y Notificaciones</string>
+    <string name="drawer_info_item">Información General</string>
+    <string name="drawer_terms_subitem">Términos y Condiciones</string>
+    <string name="drawer_politics_subitem">Políticas de Privacidad y Cookies</string>
+    <string name="drawer_deposito_bancario">Validar Depósito Bancario</string>
+    <string name="drawer_configuracion">Configuración</string>
+
+    <string name="drawer_my_location">Mi Ubicación: %1$s</string>
+    <string name="drawer_recharges_requests">Solicitudes de Recarga</string>
+    <string name="label_location_visible">Visible</string>
+    <string name="label_location_invisible">Invisible</string>
+
+    <!--Activities-->
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_config">Configuración</string>
+    <string name="title_activity_profile">Mi Cuenta</string>
+    <string name="title_activity_infor">Polítcas de Privacidad</string>
+    <string name="title_activity_topup_requests">Solicitudes de Recarga</string>
+
+    <string name="title_activity_request_airtime">Solicitar Saldo</string>
+    <string name="title_activity_promotions">Promociones</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Showcase Strings-->
+    <string name="sv_title_6">Busca Contactos</string>
+    <string name="sv_content_6">Busca un número entre tus contactos</string>
+    <string name="sv_title_3">Número Telefónico</string>
+    <string name="sv_content_3">Aquí escribes el número de teléfono.</string>
+    <string name="sv_title_2">Operador</string>
+    <string name="sv_content_2">Selecciona el operador del que se hará la recarga.</string>
+    <string name="sv_title_1">Saldo Disponible</string>
+    <string name="sv_content_1">Este es el saldo que tienes para vender.</string>
+    <string name="sv_title_4">Monto de la Recarga</string>
+    <string name="sv_content_4">Debes seleccionar un monto a recargar.</string>
+    <string name="sv_title_5">¡Listo!</string>
+    <string name="sv_content_5">Ahora haz click en el botón Enviar.</string>
+    <string name="sv_close_boton">Cerrar</string>
+
+
+    <!--    SPINNER     -->
+    <string name="spinner_hint">Seleccione...</string>
+    <string name="spinner_amount_validation">Debe seleccionar un monto</string>
+    <string name="spinner_bank_validation">Debe seleccionar el banco correspondiente</string>
+    <string name="demo_string_2">Navegación Ilimitada x 2 días</string>
+    <string name="demo_string_1">Llamadas Internacionales</string>
+    <string name="demo_claro_1">Super Pack Llamadas $1</string>
+    <string name="demo_claro_2">Super Pack Navegación $0.50</string>
+    <string name="demo_claro_3">Super Pack Redes Sociales $0.25</string>
+    <string name="demo_tigo_1">PaqueTigo Llamadas $1</string>
+    <string name="demo_tigo_2">PaqueTigo Navegación $0.50</string>
+    <string name="demo_tigo_3">PaqueTigo Redes Socioales $0.25</string>
+
+    <!--    <string name="demo_movi_1"></string>
+    <string name="demo_movi_2"></string>
+    <string name="demo_digicel_1"></string>
+    <string name="demo_digicel_2"></string>-->
+
+    <!--<string name="bank_name_citi">Banco Citibank de El Salvador, S.A.</string>-->
+    <string name="bank_name_citi">Banco Cuscatlán, S.A.</string>
+    <string name="bank_name_agricola">Banco Agricola, S.A.</string>
+    <string name="bank_name_bac">Banco de América Central, S.A.</string>
+    <string name="bank_name_atm_bac">Cajero ATM Full Service BAC</string>
+    <string name="bank_name_atm_agricola">Cajero Total / Banco Agrícola</string>
+
+    <string name="payment_not_paid">NO PAGADA</string>
+    <string name="payment_paid">PAGADA</string>
+    <string name="status_recarga_display_success">Recarga Exitosa</string>
+    <string name="status_recarga_display_fail">Recarga Fallida</string>
+
+
+    <!--CONFIGURACION-->
+    <string name="preference_pin_summary">Establezca un PIN para ingresar a la aplicación</string>
+    <string name="preference_pass_summary">Cambiar la contraseña de su cuenta de YoVendoRecarga</string>
+    <string name="preference_pin_title">Manejo de PIN</string>
+    <string name="preference_pass_title">Manejo de Contraseña</string>
+    <string name="preference_version_text">Versión</string>
+    <string name="preference_version_number">Versión 2.0</string>
+    <string name="preference_politics_title">Políticas de Privacidad</string>
+    <string name="preference_rating">Calificar</string>
+    <string name="preference_rating_summary">Tu opinón es importante. Califica nuestra aplicación.</string>
+
+    <string name="preference_request_pin">Solicitar el PIN</string>
+    <string name="preference_request_pin_summary">Se te pedirá un PIN de 4 dígitos para configuraciones y recargas.</string>
+    <string name="preference_set_pin">Establecer el PIN</string>
+    <string name="preference_set_pin_summary">Establecer o cambiar el PIN de acceso.</string>
+    <string name="preference_change_pin">Cambiar el PIN</string>
+    <string name="preference_change_pin_summary">Cambiar el PIN de acceso que ya está establecido</string>
+
+    <string name="title_insert_pin">PIN de Seguridad</string>
+    <string name="title_insert_pwd">Contraseña</string>
+    <string name="content_insert_pwd">Por favor ingrese su contraseña</string>
+    <string name="content_insert_pin">Escriba el PIN de seguridad de 4 dígitos para usar la aplicación de YoVendoRecarga.</string>
+    <string name="content_change_pin">Escriba un nuevo PIN de seguridad de 4 dígitos y confírmelo.</string>
+    <string name="content_pin_confirmation">Escriba el PIN de seguridad de 4 dígitos para continuar.</string>
+    <string name="content_pin_topup">Se hará una recarga al número:</string>
+    <string name="content_pin_amount_topup_p1">Se hará una recarga de </string>
+    <string name="content_pin_amount_topup_p2"> al número:</string>
+    <string name="content_pin_topup_denial">Se denegará una recarga al número:</string>
+    <string name="incorrect_pin_try_again">El PIN introducido es incorrecto, vuelva a intentarlo.</string>
+    <string name="incorrect_pww_try_again">Contraseña incorrecta, vuelva a intentarlo.</string>
+
+    <string name="pin_insert_hint"><font size="14">PIN</font></string>
+    <string name="pin_insert_pwd">Contraseña</string>
+    <string name="pin_confirm_hint"><font size="14">Confirme PIN</font></string>
+
+    <string name="dialog_signing_out">Cerrando sesión, espere...</string>
+    <string name="version">Versión</string>
+
+    <string name="google_play_not_supported">Este dispositivo no tiene soporte para Google Play Services.</string>
+    <string name="n_new_notifications">notificaciones nuevas</string>
+    <string name="yvs">YoVendoSALDO</string>
+    <string name="yvr">YoVendoRECARGA</string>
+    <string name="new_notifications">Nuevas notificaciones</string>
+    <string name="click_to_open_notifications">Toca para ver las notificaciones</string>
+    <string name="general_text_wait">Espere...</string>
+
+    <!-- Deposito bancario -->
+    <string name="title_request_airtime">Solicitar Saldo</string>
+    <string name="content_request_airtime">Para solicitar saldo, haz click en el botón SOLICITAR SALDO para pedir a tu Master que transfiera más saldo a tu cuenta.</string>
+    <string name="request_airtime">Solictar Saldo</string>
+    <string name="request_airtime_confirmation">¿Desea solictar saldo al Master?</string>
+    <string name="hint_voucher_alternative">No. de Cédula o Pasaporte:</string>
+    <string name="hint_voucher">Nº de Comprobante o Referencia</string>
+
+    <!--    Location Dialog     -->
+    <string name="title_activate_location">Activar Ubicación</string>
+    <string name="content_activate_location">Debe activar la  ubicación antes de continuar.</string>
+
+    <!--    Logout Dialog    -->
+    <string name="title_logout">CERRAR SESIÓN</string>
+    <string name="content_confirm_logout">¿Está seguro que desea cerrar sesión?</string>
+
+    <string name="no_userbags_title">BOLSONES ACTIVOS</string>
+    <string name="no_userbags_message">No tienes bolsones asignados, contacta a soporte técnico.</string>
+
+    <string name="refer_title_text">Gana saldo para llamadas a Claro ¡GRATIS!</string>
+    <string name="refer_content_text">Obtén saldo para llamadas a Claro gratis invitando a un amigo a YoVendoRECARGA. Sólo escribe su dirección de correo electrónico.</string>
+
+    <!--    REFERIDOS   -->
+    <string name="label_reffer_title">¡Refiere a un amigo y gana!</string>
+    <string name="label_reffer_conten1">Gana $5 en recargas al referir a un amigo para que sea vendedor de </string>
+    <string name="label_reffer_conten2">Ingresa el correo electrónico de tu amigo para que reciba un E-mail y sea parte de tus referidos.</string>
+    <string name="label_reffer_conten3">¡Asegúrate que el E-mail sea el correcto!</string>
+    <string name="label_reffer_conten4"><u>Más información...</u></string>
+    <string name="hint_reffer_email">Email de tu amigo</string>
+    <string name="button_reffer_send">¡INVITAR AMIGO AHORA!</string>
+
+    <string name="title_dialog_coming_soon">PRÓXIMAMENTE</string>
+    <string name="content_dialog_coming_soon">Espéralo muy pronto</string>
+    <string name="button_accept">ACEPTAR</string>
+
+    <string name="schedul_for_deposits"><i>Nuestros Horarios de atención para la validación de depósitos o transferencias son: Lun - Vie de 8:00 am a 5:00 pm y Sábado de 9:00 am a 1:00 pm</i></string>
+
+    <!--    RATING DIALOG -->
+    <string name="dialog_title_rate_us">¡Califícanos con 5 estrellas!</string>
+    <string name="dialog_content_rate_us">Gracias por usar YoVendoRecarga.com, queremos ofrecerte siempre el mejor servicio para que sigas ganando dinero vendiendo recargas.</string>
+    <string name="dialog_button_positive_rate_us">Si, por supuesto</string>
+    <string name="dialog_button_negative_rate_us">No, gracias</string>
+
+    <!--    ERROR OPERATOR DIALOG   -->
+    <string name="title_operator_error">Plataforma %1$s en Mantenimiento</string>
+    <string name="content_operator_error">Inténtalo nuevamente en unos minutos.</string>
+
+
+    <!--    APP VERSION VALIDATION -->
+    <string name="title_must_update_app">ACTUALIZA LA APLICACIÓN</string>
+    <string name="content_must_update_app">Debes actualizar tu aplicación a la versión %1$s para continuar.</string>
+    <string name="content_must_update_app_generic">Debes actualizar tu aplicación a la última versión para continuar.</string>
+
+    <!--    FACEBOOK    -->
+    <string name="facebook_app_id">2274157712808522</string>
+    <string name="fb_login_protocol_scheme">fb2274157712808522</string>
+    <string name="label_profile_full_name">Nombre Completo</string>
+    <string name="label_profile_nickname">Nickname</string>
+    <string name="label_phone">Teléfono</string>
+    <string name="label_associate_facebook">Asociar mi Facebook</string>
+    <string name="label_profile_last_sale">Última recarga vendida</string>
+    <string name="label_profile_associate_facebook">Asocia tu cuenta de Facebook para avisar a tus amigos que vendes recargas y compartir resultados de ventas.</string>
+    <string name="label_profile_facebook">Cuenta de Facebook</string>
+    <string name="label_profile_vendorcode">Cód. Vendedor: %1$d</string>
+    <string name="label_profile_share">Compartir</string>
+    <string name="label_profile_share_to_friends">¡Avisa a tus amigos que vendes recargas! Compártelo para cuando necesiten una recarga.</string>
+    <string name="chk_label_share_topup">Compartir en Facebook cada recarga que vendo</string>
+    <string name="facebook_quote_im_seller">Soy vendedor de YoVendoRecarga.com! Escríbeme si necesitas una Recarga!</string>
+    <string name="facebook_quote_just_sold_topup">¡Acabo de vender una recarga de %1$s!</string>
+    <string name="label_facebook_fanpage">Página de Facebook</string>
+    <string name="label_facebook_like_yvr">¡No olvides dar \"Me Gusta\" a YoVendoRecarga.com en Facebook!</string>
+
+    <!--    NICKNAME    -->
+    <string name="title_nickname">Nickname (Sobrenombre)</string>
+    <string name="label_pick_a_nickname">Elige un nickname (nombre de usuario o sobrenombre) para tu perfil de YoVendoRecarga</string>
+    <string name="hint_nickname">Ej. jose.luis; majo12</string>
+    <string name="label_nickname_already_exists">Ese nickname ya existe, por favor elige otro</string>
+    <string name="label_nickname_success_title">NICKNAME ASIGNADO</string>
+    <string name="label_nickname_success_content">¡El nickname o sobrenombre se asignó correctamente!</string>
+    <string name="label_no_sales_registered">Aún no has vendido ninguna recarga</string>
+    <string name="button_content_share_on_facebook">¡Compartir en Facebook!</string>
+    <string name="label_continue">Continuar</string>
+    <string name="label_sale_another_topup">Enviar Otra Recarga</string>
+    <string name="topup_request_denied">Recarga rechazada. Una notificación ha sido enviada al solicitante.</string>
+    <string name="no_notifications_text">No tienes ninguna notificación</string>
+    <string name="tv_empty_layout_error">¡Inténtalo nuevamente!</string>
+    <string name="tv_no_notifications_empty_text">No tienes ninguna notificación</string>
+
+    <!-- HISTORIAL -->
+
+    <string name="message_history_today">Aún no has vendido ninguna recarga el día de hoy.</string>
+    <string name="message_history_yesterday">No realizaste ninguna venta el día de ayer.</string>
+    <string name="message_history_week">Aún no has vendido ninguna recarga esta semana.</string>
+    <string name="message_history_all">Aún no has vendido ninguna recarga.</string>
+    <string name="something_went_wrong_try_again_toast">Algo salió mal, inténtalo nuevamente</string>
+    <string name="button_edit_favorites">Editar Favoritos</string>
+    <string name="label_edit_favorites">Editar Favoritos</string>
+    <string name="hint_number">Número</string>
+    <string name="hint_name">Nombre</string>
+    <string name="label_add_favorite">Agregar Número</string>
+    <string name="title_favorites">FAVORITOS</string>
+
+</resources>

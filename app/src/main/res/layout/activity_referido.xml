@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_home"
+    tools:context="com.globalpaysolutions.yovendorecarga.Referido">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/referToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/ApplicationGreenTheme"
+        android:elevation="4dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat"
+        app:theme="@style/ToolbarTheme"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingTop="@dimen/ActivityVerticalExtraCustomMargin"
+            android:paddingBottom="@dimen/ActivityVerticalExtraCustomMargin"
+            android:paddingLeft="@dimen/ActivityHorizontalExtraCustomMargin"
+            android:paddingRight="@dimen/ActivityHorizontalExtraCustomMargin" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_reffer_title"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textColor="@color/AppGreen"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ActivityVerticalCustomMargin"
+                android:text="@string/label_reffer_conten1"
+                android:gravity="center_horizontal"
+                android:textColor="@color/TextColor"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:layout_marginTop="@dimen/ActivityVerticalCustomMargin"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_horizontal_verde"/>
+
+            <TextView
+                android:id="@+id/lblMoreInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/label_reffer_conten4"
+                android:gravity="center_horizontal"
+                android:textColor="@color/SubtitleTextColor"
+                android:textSize="15sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ActivityVerticalCustomMargin"
+                android:text="@string/label_reffer_conten2"
+                android:gravity="center_horizontal"
+                android:textColor="@color/TextColor"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/etEmailReferred"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/custom_white_edittext_rounded_corners"
+                android:hint="@string/hint_reffer_email"
+                android:inputType="textEmailAddress"
+                android:paddingEnd="8dp"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/ActivityVerticalCustomMargin"
+                android:text="@string/label_reffer_conten3"
+                android:textColor="@color/TextColor"
+                android:textSize="15sp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ActivityVerticalCustomMargin"
+                android:paddingLeft="@dimen/ActivityHorizontalCustomMargin"
+                android:paddingRight="@dimen/ActivityHorizontalCustomMargin"
+                android:textColor="@color/ActivityWhiteBackground"
+                android:background="@drawable/btn_effect_ripple_green"
+                android:onClick="enviarReferido"
+                android:text="@string/button_reffer_send"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

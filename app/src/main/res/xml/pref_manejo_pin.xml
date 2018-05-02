@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<com.globalpaysolutions.yovendosaldo.customs.SwitchPreferenceCompat
+        android:key="KEY_ACTIVATE_PIN"
+        android:summary="@string/preference_request_pin_summary"
+        android:title="@string/preference_request_pin"/>-->
+    <CheckBoxPreference
+        android:key="KEY_ACTIVATE_PIN"
+        android:summary="@string/preference_request_pin_summary"
+        android:title="@string/preference_request_pin"/>
+    <Preference
+        android:dependency="KEY_ACTIVATE_PIN"
+        android:key="preference_set_pin"
+        android:summary="@string/preference_change_pin_summary"
+        android:title="@string/preference_change_pin">
+        <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.globalpaysolutions.yovendorecarga.PIN"
+                android:targetPackage="com.globalpaysolutions.yovendorecarga">
+                <extra
+                    android:name="PIN_CONF"
+                    android:value="CHANGE_PIN"/>
+            </intent>
+    </Preference>
+</PreferenceScreen>

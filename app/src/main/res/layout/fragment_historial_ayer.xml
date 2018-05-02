@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:paddingLeft="16dp"
+             android:paddingRight="16dp"
+             tools:context="com.globalpaysolutions.yovendorecarga.FragmentHistorialAyer">
+
+    <ProgressBar
+        android:id="@+id/pbLoadingYesterday"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+
+    <TextView
+        android:id="@+id/tvNo_sales_yesterday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/message_history_yesterday"
+        android:textSize="18dp"
+        android:textAlignment="center"/>
+
+    <ListView
+        android:id="@+id/lvVentasAyer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/ActivityVerticalCustomMargin"
+        android:divider="@null" />
+
+</FrameLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lnrParentItem"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="12"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rlvIconContainer"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_weight="2"  >
+
+        <ImageView
+            android:id="@+id/icClear"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clear"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_weight="5"  >
+
+       <!-- <ImageView
+            android:id="@+id/icClear"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clear"/>-->
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tvNickname"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="14sp"
+            tools:text="Niña pimpa"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="@drawable/custom_dashed_gray_vertical_line"/>
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_weight="5"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            tools:text="7777-1234"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app:menu xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/Home"
+            android:checked="false"
+            android:icon="@drawable/icono_home"
+            android:title="Vender"/>
+        <item
+            android:id="@+id/Historial"
+            android:checked="false"
+            android:icon="@drawable/icono_historial"
+            android:title="Historial de Ventas"/>
+        <item
+            android:id="@+id/ValidarDeposito"
+            android:checked="false"
+            android:icon="@drawable/icono_banco"
+            android:title="@string/drawer_deposito_bancario"/>
+        <item
+            android:id="@+id/Alertas"
+            android:checked="false"
+            android:icon="@drawable/icono_notificaciones"
+            android:title="Notificaciones"/>
+        <!--<item
+            android:id="@+id/Referir"
+            android:checked="false"
+            android:icon="@drawable/ic_referred"
+            android:title="Recargas Gratis"/>-->
+        <item
+            android:id="@+id/Promociones"
+            android:checked="false"
+            android:icon="@drawable/ic_referred"
+            android:title="¡Promociones!"/>
+        <item
+            android:id="@+id/SolicitudesRecarga"
+            android:checked="false"
+            android:icon="@drawable/ic_menu_solicitudes_recarga"
+            android:title="@string/drawer_recharges_requests"/>
+        <item
+            android:id="@+id/Ubicacion"
+            android:checked="false"
+            android:icon="@drawable/ic_menu_ubicacion"
+            android:title="@string/drawer_my_location"
+            app:actionLayout="@layout/custom_action_view_vendor_location"/>
+        <item
+            android:id="@+id/Chat"
+            android:checked="false"
+            android:icon="@drawable/ic_livechat"
+            android:title="Chat YVR - Soporte"/>
+    </group>
+    <group
+        android:id="@+id/menu_conf"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/Perfil"
+            android:checked="false"
+            android:icon="@drawable/icono_perfil"
+            android:title="@string/drawer_profile_item" />
+
+        <item
+            android:id="@+id/Conf"
+            android:checked="false"
+            android:icon="@drawable/icono_config"
+            android:title="@string/drawer_configuracion">
+        </item>
+    </group>
+</app:menu>
