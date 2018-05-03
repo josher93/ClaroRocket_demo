@@ -20,11 +20,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:scaleType="fitCenter"
             android:layout_width="245dp"
             android:layout_height="100dp"
             android:layout_marginBottom="@dimen/VerticalItemSpace"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/yvs_logo_green"
+            android:background="@drawable/logo_horizontal"
             />
 
         <LinearLayout

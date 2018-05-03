@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<color name="ApplicationGreenTheme">#76bd1d</color>
-    <color name="ApplicationGreenThemeDark">#619b19</color>
-    <color name="ActivityWhiteBackground">#FFFFFF</color>
-    <color name="SubtitleTextColor">#999999</color>
-    <color name="TextColor">#666666</color>
-    <color name="UltraLightGray">#d9d9d9</color>
-    <color name="SuperUltraLightGray">#f2f2f2</color>-->
-
 
 
 
@@ -73,5 +65,13 @@
     <!--    DARK GRAY-->
     <color name="DarkGrayPressed">#999999</color>
     <color name="DarkGray">#666666</color>
+
+
+    <!-- COLORES DE CLARO ROCKET     -->
+
+    <color name="color_claro_red">#e72a2e</color>
+    <color name="color_claro_red_dark">#b42225</color>
+    <color name="color_claro_red_pressed">#e25255</color>
+    <color name="color_claro_black">#434343</color>
 
 </resources>

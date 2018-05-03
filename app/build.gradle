@@ -52,7 +52,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation 'com.android.volley:volley:1.1.0'
     implementation files('libs/common-lang3.jar')
@@ -73,7 +73,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.6.2'
     //GeoFire
     implementation 'com.firebase:geofire-android:2.1.1'
-    implementation files('libs/LiveChatWindow.jar')
 
     //Facebook SDK
     implementation('com.facebook.android:facebook-android-sdk:[4,5)')

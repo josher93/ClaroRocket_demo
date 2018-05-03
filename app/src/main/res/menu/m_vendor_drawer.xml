@@ -11,39 +11,18 @@
             android:checked="false"
             android:icon="@drawable/icono_historial"
             android:title="Historial de Ventas"/>
-        <item
-            android:id="@+id/SolicitarSaldo"
-            android:checked="false"
-            android:icon="@drawable/icono_solicitar_saldo"
-            android:title="@string/drawer_balance_item"/>
-        <item
-            android:id="@+id/Alertas"
-            android:checked="false"
-            android:icon="@drawable/icono_notificaciones"
-            android:title="Alertas y Notificaciones"/>
 
         <item
-            android:id="@+id/Chat"
+            android:id="@+id/EstadoCuenta"
             android:checked="false"
-            android:icon="@drawable/ic_livechat"
-            android:title="Chat YVR - Soporte"/>
-
-    </group>
-    <group
-        android:id="@+id/menu_conf"
-        android:checkableBehavior="none">
+            android:icon="@drawable/ic_referred"
+            android:title="Estado de Cuenta"/>
 
         <item
             android:id="@+id/Perfil"
             android:checked="false"
             android:icon="@drawable/icono_perfil"
-            android:title="@string/drawer_profile_item" />
+            android:title="Perfil"/>
 
-        <item
-            android:id="@+id/Conf"
-            android:checked="false"
-            android:icon="@drawable/icono_config"
-            android:title="@string/drawer_configuracion" >
-        </item>
     </group>
 </menu>

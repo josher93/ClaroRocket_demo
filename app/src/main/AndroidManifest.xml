@@ -142,13 +142,6 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.SolicitarSaldo"
-            android:label="@string/title_activity_request_airtime"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity
             android:name="com.globalpaysolutions.yovendorecarga.DepositoBancario"
             android:label="@string/title_activity_deposito_bancario"
             android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
@@ -170,27 +163,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
 
-        <activity
-            android:name="com.globalpaysolutions.yovendorecarga.Referido"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-        </activity>
         <activity android:name="com.globalpaysolutions.yovendorecarga.Start">
-        </activity>
-        <activity
-            android:name="com.globalpaysolutions.yovendorecarga.SolicitudesRecarga"
-            android:label="@string/title_activity_topup_requests"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-        </activity>
-        <activity
-            android:name="com.globalpaysolutions.yovendorecarga.Promociones"
-            android:label="@string/title_activity_promotions"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name="com.livechatinc.inappchat.ChatWindowActivity"
