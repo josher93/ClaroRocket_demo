@@ -150,38 +150,6 @@ public class Login extends AppCompatActivity
             ex.printStackTrace();
         }
 
-        ///////////////////////////////
-        //Pryuueba RealM
-
-
-
-       /* Realm.init(this);
-        Realm realm = Realm.getDefaultInstance();
-
-        // Copy the object to Realm. Any further changes must happen on realmUser
-        realm.beginTransaction();
-
-        for(int x = 0; x < 1000; x++)
-        {
-            Person person = new Person();
-            person.setId(x);
-            person.setName("Prueba #" + String.valueOf(x));
-            realm.copyToRealmOrUpdate(person);
-        }
-
-        realm.commitTransaction();
-
-        RealmQuery<Person> query = realm.where(Person.class);
-        RealmResults<Person> result1 = query.findAll();
-
-        RealmQuery<Person> query2 = realm.where(Person.class).greaterThan("id", 500);
-        //RealmResults<Person> result2 = query2.findAll();
-        Person found = query2.findFirst();
-
-        Log.i("Realm", "Person: " + found.getName());*/
-
-        //Log.i("Realm", "Count: " + String.valueOf(result2.size()));
-
     }
 
     @Override

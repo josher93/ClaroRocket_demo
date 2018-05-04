@@ -77,27 +77,11 @@ public class Perfil extends AppCompatActivity
     TextView tvPhone;
     TextView tvLastSale;
     TextView tvPhoneLabel;
-    TextView tvAssociateFacebook;
-    CheckBox chckTopupShare;
     CircleImageView ivProfilePicture;
-    LinearLayout fbpanelLoggedIn;
 
     //Global Fragment variables
     Validation Validator;
     SessionManager sessionManager;
-
-    //Facebook
-    CallbackManager callbackManager;
-    LoginButton btnLoginFacebook;
-    LikeView btnLikeFacebook;
-    ShareButton btnShareFacebook;
-    ProfileTracker profileTracker;
-    AccessTokenTracker accessTokenTracker;
-    ShareDialog shareDialog;
-    String facebookEmail;
-
-    //AccessTokenTracker accessTokenTracker;
-    //AccessToken accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -118,75 +102,15 @@ public class Perfil extends AppCompatActivity
         tvPhone = (TextView) findViewById(R.id.tvPhone);
         tvLastSale = (TextView) findViewById(R.id.tvLastSale);
         tvPhoneLabel = (TextView) findViewById(R.id.tvPhoneLabel);
-        chckTopupShare = (CheckBox) findViewById(R.id.chckTopupShare);
-        tvAssociateFacebook = (TextView) findViewById(R.id.tvAssociateFacebook);
-        btnLoginFacebook = (LoginButton) findViewById(R.id.btnLoginFacebook);
-        btnLikeFacebook = (LikeView) findViewById(R.id.btnLikeFacebook);
-        btnShareFacebook = (ShareButton) findViewById(R.id.btnShareFacebook);
         ivProfilePicture = (CircleImageView) findViewById(R.id.ivProfilePicture);
-        fbpanelLoggedIn = (LinearLayout) findViewById(R.id.fbpanelLoggedIn);
 
         sessionManager = new SessionManager(this);
-        callbackManager = CallbackManager.Factory.create();
-
-        btnLoginFacebook.setReadPermissions(Arrays.asList("email","public_profile"));
-
-        chckTopupShare.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
-            {
-                if(chckTopupShare.isChecked())
-                    sessionManager.saveFacebookSettingShareAllowed(true);
-                else
-                    sessionManager.saveFacebookSettingShareAllowed(false);
-            }
-        });
-
-        profileTracker = new ProfileTracker()
-        {
-            @Override
-            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile)
-            {
-                updateUI();
-            }
-        };
-
-        accessTokenTracker = new AccessTokenTracker()
-        {
-            @Override
-            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken)
-            {
-                if (currentAccessToken == null)
-                {
-                    sessionManager.saveFacebookLoggedin(false);
-                    Log.i(TAG, "User logged out from Facebook");
-                }
-            }
-        };
 
         setUpProfile();
-        setUpFacebook();
 
-        updateUI();
 
-        if (ShareDialog.canShow(ShareLinkContent.class))
-        {
-            ShareLinkContent shareContent = new ShareLinkContent.Builder()
-                    .setContentUrl(Uri.parse(StringsURL.YVR_WEB))
-                    .setQuote(getString(R.string.facebook_quote_im_seller))
-                    .setShareHashtag(new ShareHashtag.Builder().setHashtag(StringsURL.YVR_HASHTAG1).build())
-                    .build();
-            btnShareFacebook.setShareContent(shareContent);
-        }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
 
     public void setUpProfile()
     {
@@ -204,6 +128,7 @@ public class Perfil extends AppCompatActivity
         String lastSale = sessionManager.getUserLastsale();
         String phone = sessionManager.getUserPhoneNumber();
 
+        Picasso.with(this).load(R.drawable.img_profile_picture).into(ivProfilePicture);
         tvName.setText(shortName);
         tvNick.setText(nickname);
         tvVendorCode.setText(code);
@@ -212,180 +137,9 @@ public class Perfil extends AppCompatActivity
         tvLastSale.setText(formatDate(lastSale));
         tvPhone.setText(formatPhone(phone));
 
-        if(sessionManager.isFacebookShareAllowed())
-            chckTopupShare.setChecked(true);
-        else
-            chckTopupShare.setChecked(false);
+
     }
 
-    public void setUpFacebook()
-    {
-        // Callback registration
-        btnLoginFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
-        {
-            @Override
-            public void onSuccess(LoginResult loginResult)
-            {
-                // App code
-
-                GraphRequest mGraphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(),
-                        new GraphRequest.GraphJSONObjectCallback()
-                        {
-                            @Override
-                            public void onCompleted(JSONObject me, GraphResponse response)
-                            {
-                                if (response.getError() == null)
-                                {
-                                    try
-                                    {
-                                        facebookEmail = me.getString("email");
-                                        Log.i(TAG, "FacebookEmail: " + facebookEmail);
-                                    }
-                                    catch (JSONException ex) {  ex.printStackTrace();   }
-                                }
-                            }
-                        });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "email, name");
-                mGraphRequest.setParameters(parameters);
-                mGraphRequest.executeAsync();
-
-
-                updateUI();
-                sessionManager.saveFacebookLoggedin(true);
-            }
-
-            @Override
-            public void onCancel()
-            {
-                // App code
-                updateUI();
-            }
-
-            @Override
-            public void onError(FacebookException exception)
-            {
-                // App code
-                updateUI();
-            }
-        });
-
-        //Share
-        shareDialog = new ShareDialog(this);
-        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>()
-        {
-            @Override
-            public void onSuccess(Sharer.Result result)
-            {
-
-            }
-
-            @Override
-            public void onCancel()
-            {
-
-            }
-
-            @Override
-            public void onError(FacebookException error)
-            {
-
-            }
-        });
-
-        btnLikeFacebook.setObjectIdAndType(StringsURL.YVR_FACEBOOK, LikeView.ObjectType.PAGE);
-    }
-
-    public void updateUI()
-    {
-        try
-        {
-            Profile profile = Profile.getCurrentProfile();
-            if (profile != null)
-            {
-                String picture = profile.getProfilePictureUri(500, 500).toString();
-                Picasso.with(this).load(picture).into(ivProfilePicture);
-
-                sessionManager.saveFacebookFirstname(profile.getFirstName());
-                sessionManager.saveFacebookLastname(profile.getLastName());
-                sessionManager.saveFacebookProfileID(profile.getId());
-                sessionManager.saveUserFacebookURL(profile.getLinkUri().toString());
-
-                String facebookName = sessionManager.getFacebookFirstname() + " " + sessionManager.getFacebookLastname();
-                tvName.setText(facebookName);
-                tvAssociateFacebook.setVisibility(View.GONE);
-                fbpanelLoggedIn.setVisibility(View.VISIBLE);
-
-                insertUserFacebookInfo(facebookEmail);
-
-            }
-            else
-            {
-                ivProfilePicture.setImageDrawable(getResources().getDrawable(R.drawable.img_profile_picture));
-                tvAssociateFacebook.setVisibility(View.VISIBLE);
-                fbpanelLoggedIn.setVisibility(View.GONE);
-            }
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace();
-        }
-    }
-
-    public void insertUserFacebookInfo(String pEmail)
-    {
-        try
-        {
-            JSONObject body = new JSONObject();
-            body.put("ProfileID", sessionManager.getFacebookProfileID());
-            body.put("userID", sessionManager.getFacebookUserID());
-            body.put("firstname", sessionManager.getFacebookFirstname());
-            body.put("middlename", "Not found");
-            body.put("lastname", sessionManager.getFacebookLastname());
-            body.put("email", pEmail);
-            body.put("phoneNumber", "Not found");
-            body.put("facebookURL", sessionManager.getFacebookUrl());
-
-            if (CheckConnection())
-            {
-                YVScomSingleton.getInstance(this).addToRequestQueue(new JsonObjectRequest(
-                                Request.Method.POST,
-                                StringsURL.INSERT_FACEBOOK_PROFILE,
-                                body,
-                                new Response.Listener<JSONObject>()
-                                {
-                                    @Override
-                                    public void onResponse(JSONObject response)
-                                    {
-                                        Log.d(TAG, "Success: " + response.toString());
-                                    }
-                                },
-                                new Response.ErrorListener()
-                                {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error)
-                                    {
-                                        Log.d(TAG, "Error: " + error.toString());
-                                    }
-                                }
-                        )
-                        {
-                            @Override
-                            public Map<String, String> getHeaders()
-                            {
-                                Map<String, String> headers = new HashMap<String, String>();
-                                headers.put("Token-Autorization", sessionManager.getSavedToken());
-                                headers.put("Content-Type", "application/json; charset=utf-8");
-                                return headers;
-                            }
-                        }, 1);
-            }
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace();
-        }
-    }
 
     /*
      *

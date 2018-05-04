@@ -19,7 +19,7 @@
             android:id="@+id/toolbarProf"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/ApplicationGreenTheme"
+            android:background="@color/color_claro_red"
             android:elevation="4dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat"
             app:theme="@style/ToolbarTheme"/>
@@ -132,104 +132,6 @@
                             android:textSize="16sp"/>
 
 
-                        <!--    FACEBOOK    -->
-
-                        <LinearLayout
-                            android:id="@+id/fbpanelLoggedIn"
-                            android:orientation="vertical"
-                            android:layout_marginTop="@dimen/ActivityVerticalExtraCustomMargin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_profile_share"
-                                android:textColor="@color/SubtitleTextColor"
-                                android:textSize="12sp"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_profile_share_to_friends"
-                                android:textColor="@color/MainTitleTextColor"
-                                android:textSize="16sp"/>
-
-                            <com.facebook.share.widget.ShareButton
-                                android:id="@+id/btnShareFacebook"
-                                android:layout_width="wrap_content"
-                                android:layout_height="32dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="@dimen/activity_vertical_margin" />
-
-                            <CheckBox
-                                android:id="@+id/chckTopupShare"
-                                android:layout_marginTop="@dimen/activity_vertical_margin"
-                                android:text="@string/chk_label_share_topup"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-
-                            <TextView
-                                android:layout_marginTop="@dimen/ActivityVerticalExtraCustomMargin"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_facebook_fanpage"
-                                android:textColor="@color/SubtitleTextColor"
-                                android:textSize="12sp"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_facebook_like_yvr"
-                                android:textColor="@color/MainTitleTextColor"
-                                android:textSize="16sp"/>
-
-                            <com.facebook.share.widget.LikeView
-                                android:id="@+id/btnLikeFacebook"
-                                android:layout_width="wrap_content"
-                                android:layout_height="32dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/fbpanelLoggedOut"
-                            android:orientation="vertical"
-                            android:layout_marginTop="@dimen/ActivityVerticalExtraCustomMargin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_profile_facebook"
-                                android:textColor="@color/SubtitleTextColor"
-                                android:textSize="12sp"/>
-
-                            <TextView
-                                android:id="@+id/tvAssociateFacebook"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:visibility="visible"
-                                android:text="@string/label_profile_associate_facebook"
-                                android:textColor="@color/MainTitleTextColor"
-                                android:textSize="16sp"/>
-
-                            <com.facebook.login.widget.LoginButton
-                                android:id="@+id/btnLoginFacebook"
-                                android:layout_width="wrap_content"
-                                android:layout_height="32dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginBottom="@dimen/ActivityVerticalExtraCustomMargin"
-
-                                android:text="@string/label_associate_facebook"/>
-                        </LinearLayout>
-
-
-
                     </LinearLayout>
 
 
@@ -243,7 +145,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
-                        android:background="@color/PressedGreenTheme"/>
+                        android:background="@color/color_claro_red_pressed"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"

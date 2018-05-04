@@ -7,11 +7,17 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.facebook.login.LoginManager;
+import com.globalpaysolutions.yovendorecarga.Login;
 import com.globalpaysolutions.yovendorecarga.PIN;
-import com.globalpaysolutions.yovendorecarga.Start;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -20,6 +26,8 @@ import java.util.HashMap;
  */
 public class SessionManager
 {
+    private static final String TAG = SessionManager.class.getSimpleName();
+
     SharedPreferences pref;
     Editor editor;
     Context _context;
@@ -84,6 +92,8 @@ public class SessionManager
     private static final String KEY_FACEBOOK_USER_LOGGED_IN = "usr_facebook_logged_in";
     private static final String KEY_FACEBOOK_SETTING_SHARE_ALLOWED = "usr_facebook_setting_share_allowed";
     private static final String KEY_FACEBOOK_AUTH_TOKEN = "usr_facebook_auth_token";
+
+    private static final String KEY_MNO_PRODUCTS = "key_mno_products";
 
 
     public SessionManager(Context context)
@@ -291,7 +301,7 @@ public class SessionManager
     {
         if (!this.IsUserLoggedIn())
         {
-            Intent i = new Intent(_context, Start.class);
+            Intent i = new Intent(_context, Login.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -839,5 +849,59 @@ public class SessionManager
     {
         editor.putString(KEY_TOKEN, pToken);
         editor.commit();
+    }
+
+    public void saveAmounts(JSONObject response)
+    {
+        try
+        {
+            JSONArray products = response.getJSONArray("products");
+
+            for (int i = 0; i < products.length(); i++)
+            {
+                // Gets current operator
+                JSONObject operator = products.getJSONObject(i);
+
+                // If current operator is Claro
+                if(TextUtils.equals(Data.MNO_NAME, operator.getString("mno")))
+                {
+                    // Gets saved operator and products if any
+                    String savedProdicts = pref.getString(KEY_MNO_PRODUCTS, "");
+
+                    // Compares cuerrent with saved operator
+                    if(!TextUtils.equals(operator.toString(), savedProdicts))
+                    {
+                        // Saves changed products
+                        editor.putString(KEY_MNO_PRODUCTS, operator.toString());
+                        editor.commit();
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, "Error: " + ex.getMessage());
+        }
+    }
+
+    public JSONObject getSavedAmounts()
+    {
+        JSONObject savedProducts = new JSONObject();
+
+        try
+        {
+            String savedJson = pref.getString(KEY_MNO_PRODUCTS, "");
+
+            //Gson gson = new Gson();
+            JsonObject object = new JsonParser().parse(savedJson).getAsJsonObject();
+            savedProducts = new JSONObject(object.toString());
+
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, "Error: " + ex.getMessage());
+        }
+
+        return savedProducts;
     }
 }

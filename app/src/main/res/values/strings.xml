@@ -43,7 +43,7 @@
     <!--    STRINGS DE TEXTOS Y OTROS DE INTERFAZ -->
     <string name="deposit_dending_deposit">Enviando validación...</string>
     <string name="refer_sending_invitation">Enviando invitación...</string>
-    <string name="hint_email">Correo Electrónico</string>
+    <string name="hint_email">Correo electrónico</string>
     <string name="hint_password">Contraseña</string>
     <string name="hint_current_pass">Contraseña Actual:</string>
     <string name="hint_new_pass">Nueva Contraseña:</string>
@@ -130,7 +130,7 @@
     <string name="politics"><u>Políticas de Privacidad</u></string>
     <string name="not_setted">Sin establecer...</string>
     <string name="dialog_logging_in">Iniciando sesión...</string>
-    <string name="phone_number_edittext_hint"><font size="13">NÚMERO CELULAR</font></string>
+    <string name="phone_number_edittext_hint">Número de Claro</string>
     <!-- <string name="phone_number_edittext_hint">NÚMERO CELULAR</string>-->
     <!--<string name="phone_number_edittext_hint">NÚMERO CELULAR</string>-->
     <string name="allow_permission_phone_state_dialog">Debe permitir el acceso al estado del teléfono para asociar el dispositivo a su cuenta.</string>
@@ -367,5 +367,7 @@
     <string name="hint_name">Nombre</string>
     <string name="label_add_favorite">Agregar Número</string>
     <string name="title_favorites">FAVORITOS</string>
+    <string name="label_select">Seleccione</string>
+    <string name="label_title_select_amount_dialog">Seleccione un monto</string>
 
 </resources>

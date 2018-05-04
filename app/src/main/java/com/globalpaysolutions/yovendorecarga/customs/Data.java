@@ -3,7 +3,6 @@ package com.globalpaysolutions.yovendorecarga.customs;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v4.content.IntentCompat;
 import android.util.Log;
 
@@ -19,17 +18,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.yovendosaldo.R;
 import com.globalpaysolutions.yovendorecarga.Login;
-import com.globalpaysolutions.yovendorecarga.Start;
 import com.globalpaysolutions.yovendorecarga.model.Amount;
-import com.globalpaysolutions.yovendorecarga.model.Operator;
 import com.globalpaysolutions.yovendorecarga.model.PaymentItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +43,8 @@ public class Data
     public static List<Amount> Amounts = new ArrayList<>();
     public static List<Amount> resultAmountList = new ArrayList<>();
     public static boolean isEditMode = false;
+
+    public static final String MNO_NAME = "Claro El Salvador";
 
     //PIN intent counter
     public static int IntentCounter = 0;
@@ -531,7 +528,7 @@ public class Data
         sessionManager = new SessionManager(pContext);
         sessionManager.DeleteSavedToken();
 
-        Intent i = new Intent(pContext, Start.class);
+        Intent i = new Intent(pContext, Login.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

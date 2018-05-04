@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/AppGreen"
+    android:background="@color/color_claro_red"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
@@ -27,13 +27,12 @@
             android:paddingTop="@dimen/VerticalLargeItemSpace">
 
             <ImageView
-                android:scaleType="fitCenter"
-                android:layout_width="245dp"
+                android:layout_width="302dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="@dimen/VerticalItemSpace"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@drawable/logo_horizontal"
-                />
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo_horizontal" />
 
             <!--<TextView
                 android:layout_width="wrap_content"
@@ -77,26 +76,58 @@
                 <EditText
                     android:id="@+id/etRegMail"
                     android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@color/DarkGray"
+                    android:layout_marginBottom="@dimen/VerticalMediumItemSpace"
+                    tools:hint="Correo electrónico"
+                    android:gravity="center"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/btn_effect_ripple_white_rounded_corners"
+                    android:textColorHint="@color/DarkGrayPressed"/>
+
+                <!--<EditText
+                    android:id="@+id/etRegMail"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/VerticalMediumItemSpace"
                     android:hint="@string/hint_email"
-                    android:drawableLeft="@drawable/icono_email_verde"
                     android:inputType="textEmailAddress"
                     android:theme="@style/EditTextForGreenBackground"
                     android:textColor="@color/ActivityWhiteBackground"
-                    android:textColorHint="@color/SemiTransparentWhite"/>
+                    android:textColorHint="@color/SemiTransparentWhite"/>-->
 
-                <EditText
+                <!--<EditText
                     android:id="@+id/etRegPass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:drawableLeft="@drawable/icono_lock_verde"
                     android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:theme="@style/EditTextForGreenBackground"
                     android:textColor="@color/ActivityWhiteBackground"
-                    android:textColorHint="@color/SemiTransparentWhite"/>
+                    android:textColorHint="@color/SemiTransparentWhite"/>-->
+
+                <EditText
+                    android:id="@+id/etRegPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@color/DarkGray"
+                    android:inputType="textPassword"
+                    android:gravity="center"
+                    tools:hint="@string/hint_password"
+                    android:hint="@string/hint_password"
+                    android:background="@drawable/btn_effect_ripple_white_rounded_corners"
+                    android:textColorHint="@color/DarkGrayPressed" />
 
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -116,13 +147,14 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/btn_effect_ripple_white"
+                android:background="@drawable/btn_effect_ripple_white_rounded_corners"
                 android:clickable="true"
                 android:onClick="Login"
+                android:textColor="@color/color_claro_red"
                 android:paddingLeft="@dimen/ActivityHorizontalExtraCustomMargin"
                 android:paddingRight="@dimen/ActivityHorizontalExtraCustomMargin"
                 android:text="INICIAR SESIÓN"/>

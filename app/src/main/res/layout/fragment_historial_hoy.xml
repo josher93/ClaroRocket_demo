@@ -32,6 +32,7 @@
     <ListView
         android:id="@+id/lvVentasHoy"
         android:divider="@null"
+        tools:listitem="@layout/custom_sales_history_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="@dimen/ActivityVerticalCustomMargin" />

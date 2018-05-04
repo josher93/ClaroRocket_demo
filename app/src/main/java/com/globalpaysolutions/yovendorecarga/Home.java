@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -36,10 +37,12 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -81,6 +84,7 @@ import com.globalpaysolutions.yovendorecarga.model.TopupResult;
 import com.globalpaysolutions.yovendorecarga.rest.ApiClient;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.vision.text.Line;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -112,6 +116,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     RelativeLayout rlMainHomeContent;
     Toolbar toolbar;
     EditText txtPhoneNumber;
+    LinearLayout lnrSelectAmount;
 
     ProgressDialog ProgressDialog;
     Button btnTopup;
@@ -124,6 +129,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     MenuItem drawerMenuItem;
     ImageButton ibContacts;
     ImageButton ibFavorites;
+    TextView lblSelectedAmount;
 
     //Objetos para el Drawer
     private NavigationView navigationView;
@@ -131,9 +137,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
 
     //Objetos globales para activity
     List<Operator> ListaOperadores = new ArrayList<Operator>();
-    List<Amount> ListaMontos = new ArrayList<Amount>();
     List<Amount> selectedOperatorAmounts = new ArrayList<>();
-    List<Operator> arrivingOperadores = new ArrayList<>();
     private static final String TAG = Home.class.getSimpleName();
     public static String Token;
     boolean OperatorSelected = false;
@@ -149,15 +153,10 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     CustomFullScreenDialog CustomDialogCreator;
     PinDialogBuilder PinDialogBuilder;
     public PinDialogBuilder.CustomOnClickListener ClickListener;
-    String mNMO;
     DatabaseHandler db;
     RealmDatabase realmBD;
     PromotionsHandler promotionsHandler;
     String SelectedAmuntItemDisplay;
-
-
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
-
 
     //Signal
     TelephonyManager mTelephonyManager;
@@ -200,6 +199,16 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         scrollView = (ScrollView) findViewById(R.id.homeScrollView);
         ibContacts = (ImageButton) findViewById(R.id.ibContacts);
         ibFavorites = (ImageButton) findViewById(R.id.ibFavorites);
+        lblSelectedAmount = (TextView) findViewById(R.id.lblSelectedAmount);
+        lnrSelectAmount = (LinearLayout) findViewById(R.id.lnrSelectAmount);
+        lnrSelectAmount.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                displayAmounts();
+            }
+        });
 
         isFirstTime = sessionManager.IsFirstTime();
         homeActivity = this;
@@ -255,7 +264,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
             public void onRefresh()
             {
                 ListaOperadores.clear();
-                retrieveOperators();
+                RetrieveAmounts();
             }
         });
 
@@ -269,6 +278,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
 
             }
 
+            renderSavedAmounts();
         }
 
 
@@ -295,6 +305,106 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         });
 
 
+    }
+
+    private HashMap<String, Amount> mAmountsMap = new HashMap<>();
+    private List<String> mAmountNames = new ArrayList<>();
+    private Amount mSelectedAmunt;
+    List<Amount> mAmountList = new ArrayList<>();
+
+    private void renderSavedAmounts()
+    {
+        try
+        {
+            JSONObject savedData = sessionManager.getSavedAmounts();
+            JSONArray savedAmounts = savedData.getJSONArray("denomination");
+
+            for (int a = 0; a < savedAmounts.length(); a++)
+            {
+                JSONObject currentAmount = savedAmounts.getJSONObject(a);
+
+                Amount amount = new Amount();
+                //Obtiene los valores del Item
+                String amountCode = currentAmount.has("Code") ? currentAmount.getString("Code") : "";
+                String amountDisplay = currentAmount.has("Description") ? currentAmount.getString("Description") : "";
+                String amountAmount = currentAmount.has("Amount") ? currentAmount.getString("Amount") : "";
+                int amountPackageCode = currentAmount.has("PackageCode") ? currentAmount.getInt("PackageCode") : 0;
+                int relevance = currentAmount.has("Relevance") ? currentAmount.getInt("Relevance") : 0;
+
+                if(amountDisplay.isEmpty())
+                {
+                    amountDisplay = amountAmount;
+                }
+
+                //Setea el objeto Amount con las respectivas propiedades
+                amount.setMNO(Data.MNO_NAME);
+                amount.setCode(amountCode);
+                amount.setDisplay(amountDisplay);
+                amount.setPackageCode(amountPackageCode);
+                amount.setRelevance(relevance);
+
+                //  MONTOS CON DECIMALES
+                double amountWithDecimals = Double.parseDouble(amountAmount);
+
+                //Lo añade al objeto amount
+                amount.setAmount(amountWithDecimals);
+
+                mAmountList.add(amount);
+            }
+
+            for(Amount amount : mAmountList)
+            {
+                mAmountNames.add(amount.getDisplay());
+                mAmountsMap.put(amount.getDisplay(), amount);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, "Error: " + ex.getMessage());
+        }
+    }
+
+    private void displayAmounts()
+    {
+        if(mAmountList.size() > 0)
+        {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getString(R.string.label_title_select_amount_dialog));
+            ArrayAdapter arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, mAmountNames);
+            builder.setSingleChoiceItems(arrayAdapter, -1, new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+                    String amountName = mAmountNames.get(i);
+                    mSelectedAmunt = mAmountsMap.get(amountName);
+                }
+            });
+
+            builder.setPositiveButton(getString(R.string.button_accept), new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+                    if(mSelectedAmunt != null)
+                    {
+                        //presenter.createRequestTopupObject().setAmount(selectedAmount.getAmount());
+                        setSelectedAmount(mSelectedAmunt);
+                    }
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    }
+
+    private void setSelectedAmount(Amount pSelected)
+    {
+        AmountTopup = pSelected.getAmount();
+        lblSelectedAmount.setText(pSelected.getDisplay());
+        lblSelectedAmount.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+        lblSelectedAmount.setTypeface(null, Typeface.BOLD);
     }
 
 
@@ -718,339 +828,32 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     * ***************************************************************************************************
     */
 
-    public void retrieveOperators()
-    {
-        YVScomSingleton.getInstance(this).addToRequestQueue(
-                new JsonObjectRequest(
-                        Request.Method.GET,
-                        StringsURL.OPERATORS,
-                        null,
-                        new Response.Listener<JSONObject>()
-                        {
-                            @Override
-                            public void onResponse(JSONObject response)
-                            {
-                                Log.d("Mensaje JSON ", response.toString());
-                                ProcessOperatorsResponse(response);
-                                RetrieveAmounts();
-                            }
-                        },
-                        new Response.ErrorListener()
-                        {
-                            @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
-                                HandleOperatorsVolleyError(error);
-                            }
-                        }
-                )
-                {
-
-                    @Override
-                    public Map<String, String> getHeaders()
-                    {
-                        Map<String, String> headers = new HashMap<String, String>();
-                        headers.put("Token-Autorization", Token);
-                        headers.put("Content-Type", "application/json; charset=utf-8");
-                        return headers;
-                    }
-                }
-                , 1); //Parametro de número de re-intentos
-    }
-
-    public void ProcessOperatorsResponse(JSONObject pResponse)
-    {
-        try
-        {
-            JSONObject operators = pResponse.getJSONObject("operators");
-            JSONArray countryOperators = operators.getJSONArray("countryOperators");
-
-            for (int i = 0; i < countryOperators.length(); i++)
-            {
-                Operator operator = new Operator();
-
-                JSONObject jsonOperator = countryOperators.getJSONObject(i);
-                operator.setID(jsonOperator.has("operatorID") ? jsonOperator.getInt("operatorID") : 0);
-                operator.setOperatorName(jsonOperator.has("name") ? jsonOperator.getString("name") : "");
-                operator.setLogo(jsonOperator.has("operatorLogo") ? jsonOperator.getString("operatorLogo") : "");
-                operator.setLogoURL(jsonOperator.has("logoUrl") ? jsonOperator.getString("logoUrl") : "");
-                operator.setLogoVersion(jsonOperator.has("logoVersion") ? jsonOperator.getInt("logoVersion") : 0);
-                operator.setBrand(jsonOperator.has("brand") ? jsonOperator.getString("brand") : "");
-                operator.setHexColor(jsonOperator.has("HexColor") ? jsonOperator.getString("HexColor") : "");
-                operator.setRelevance(jsonOperator.has("Relevance") ? jsonOperator.getInt("Relevance") : 0);
-                ListaOperadores.add(operator);
-            }
-
-            realmBD = RealmDatabase.getInstance(this);
-            realmBD.DeleteInvalidOperators(ListaOperadores);
-
-            //setOperators();
-
-            //Setea el showcase view despues que se lleno el adapter
-            if (isFirstTime )
-            {
-                //ExecuteShowcase();
-            }
-
-        }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-    }
 
 
-    public void HandleOperatorsVolleyError(VolleyError pError)
-    {
-        int statusCode = 0;
-        NetworkResponse networkResponse = pError.networkResponse;
-
-        if (networkResponse != null)
-        {
-            statusCode = networkResponse.statusCode;
-        }
-
-        if (pError instanceof TimeoutError)
-        {
-            Toast.makeText(Home.this, getString(R.string.something_went_wrong_try_again), Toast.LENGTH_LONG).show();
-        }
-        if (pError instanceof NoConnectionError)
-        {
-            Toast.makeText(Home.this, getString(R.string.internet_connecttion_msg), Toast.LENGTH_LONG).show();
-        }
-        else if (pError instanceof ServerError)
-        {
-            //if (statusCode == 502)
-            if (statusCode == 401)
-            {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
-                alertDialog.setTitle(getString(R.string.expired_session));
-                alertDialog.setMessage(getString(R.string.dialog_error_topup_content));
-                alertDialog.setNeutralButton("Ok", new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        sessionManager.LogoutUser(false);
-                    }
-                });
-                alertDialog.show();
-            }
-            else
-            {
-                Toast.makeText(Home.this, getString(R.string.something_went_wrong_try_again), Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (pError instanceof NetworkError)
-        {
-            Toast.makeText(Home.this, getString(R.string.internet_connecttion_msg), Toast.LENGTH_LONG).show();
-        }
-        else if (pError instanceof AuthFailureError)
-        {
-            if(statusCode == 401)
-            {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
-                alertDialog.setTitle(getString(R.string.expired_session));
-                alertDialog.setMessage(getString(R.string.dialog_error_topup_content));
-                alertDialog.setNeutralButton("Ok", new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        sessionManager.LogoutUser(false);
-                    }
-                });
-                alertDialog.show();
-            }
-            else if (statusCode == 426)
-            {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
-                alertDialog.setTitle(getString(R.string.title_must_update_app));
-                alertDialog.setMessage(getString(R.string.content_must_update_app_generic));
-                alertDialog.setNeutralButton("Ok", new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        sessionManager.LogoutUser(false);
-                    }
-                });
-                alertDialog.show();
-            }
-            else
-            {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
-                alertDialog.setTitle("ERROR");
-                alertDialog.setMessage("Las credenciales son incorrectas");
-                alertDialog.setNeutralButton("Ok", new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        sessionManager.LogoutUser(false);
-                    }
-                });
-                alertDialog.show();
-            }
-        }
-    }
-
-
-
-    public void setServerAmounts(final String pOperatorName)
-    {
-        selectedOperatorAmounts.clear();
-
-        //Escenario: si no hay conexion a internet
-        //y el usuario clickeo un operador, entonces
-        //como la lista 'Data.Amounts' está vacía, no pone nada en el spinner
-        //por eso cuando esté vacía la llenará con el Hint.
-        /*if (!Data.Amounts.isEmpty())
-        {
-            for (Amount item : Data.Amounts)
-            {
-                //Valida que MNO no venga Null, para evitar NullPointerException
-                if (item.getMNO() != null && !item.getMNO().isEmpty())
-                {
-                    if (item.getMNO().equals(pOperatorName))
-                    {
-                        selectedOperatorAmounts.add(item);
-                    }
-                }
-            }
-        }
-        else
-        {
-            selectedOperatorAmounts.add(Data.AmountHint(Home.this));
-        }*/
-
-        try
-        {
-            if (!Data.Amounts.isEmpty())
-            {
-                for (Amount item : Data.Amounts)
-                {
-                    //Valida que MNO no venga Null, para evitar NullPointerException
-                    if (item.getMNO() != null && !item.getMNO().isEmpty())
-                    {
-                        if (item.getMNO().equals(pOperatorName))
-                        {
-                            if(!selectedOperatorAmounts.contains(item))
-                            {
-                                selectedOperatorAmounts.add(item);
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            //Si no hay montos del operador seleccionado, añade el hint 2 veces
-             if(selectedOperatorAmounts.size() == 0)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    selectedOperatorAmounts.add(Data.AmountHint(Home.this));
-                }
-            }
-            else
-            {
-                selectedOperatorAmounts.add(Data.AmountHint(Home.this));
-                /*String title = String.format(getString(R.string.title_operator_error), pOperatorName);
-                createGenericDialog(title, getString(R.string.content_operator_error), getString(R.string.button_accept));*/
-            }
-
-
-            AmountAdapter = new AmountSpinnerAdapter(this, R.layout.custom_amount_spinner_item, R.id.tvAmount, selectedOperatorAmounts);
-            AmountAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            SpinnerAmount = (Spinner) this.findViewById(R.id.spMontoRecarga);
-            SpinnerAmount.setAdapter(AmountAdapter);
-            SpinnerAmount.setSelection(AmountAdapter.getCount());
-            SpinnerAmount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-            {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
-                {
-                    AmountTopup = ((Amount) parentView.getItemAtPosition(position)).getAmount();
-                    PackageCode = ((Amount) parentView.getItemAtPosition(position)).getPackageCode();
-
-                    String description = ((Amount) parentView.getItemAtPosition(position)).getDisplay();
-                    SelectedAmuntItemDisplay = description;
-
-                    /*if(selectedOperatorAmounts.size() <= 1)
-                    {
-                        if(description.equals(getResources().getString(R.string.spinner_hint)))
-                        {
-                            String title = String.format(getString(R.string.title_operator_error), pOperatorName);
-                            createGenericDialog(title, getString(R.string.content_operator_error), getString(R.string.button_accept));
-                        }
-                    }*/
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parentView)
-                {
-                    // your code here
-                }
-
-            });
-
-
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace();
-        }
-    }
 
     public void RetrieveAmounts()
     {
-        //final GridView gridOperators = (GridView) findViewById(R.id.gvOperadores);
-        if (Data.Amounts.isEmpty())
+
+        RetrievingAmounts = true;
+        Data.GetAmounts(Home.this, new Data.VolleyCallback()
         {
-
-            Data.Amounts.clear();
-            RetrievingAmounts = true;
-            //gridOperators.setEnabled(false);
-            Log.i("Amounts", "Request para traer montos");
-
-            /*if (!isFirstTime)
+            @Override
+            public void onResult(boolean result, JSONObject response)
             {
-                SwipeRefresh.setProgressViewOffset(false, 0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
-                SwipeRefresh.setRefreshing(true);
-            }*/
-
-
-            Data.GetAmounts(Home.this, new Data.VolleyCallback()
-            {
-                @Override
-                public void onResult(boolean result, JSONObject response)
+                if (result)
                 {
-                    if (result)
-                    {
-                        RetrievingAmounts = false;
-                        //SwipeRefresh.setRefreshing(false);
-                        HideSwipe();
-                        //gridOperators.setEnabled(true);
+                    RetrievingAmounts = false;
+                    HideSwipe();
+                    sessionManager.saveAmounts(response);
 
-
-                        setServerAmounts("Claro El Salvador");
-
-                        /* Se obtiene la ubicacion despues de que
-                        los montos se hayan obtenido para darle suficiente
-                        tiempo a LocationRequest de conectar */
-                    }
-                    else
-                    {
-                        RetrievingAmounts = false;
-                        //SwipeRefresh.setRefreshing(false);
-                        HideSwipe();
-                        //gridOperators.setEnabled(true);
-                    }
                 }
-            });
-        }
-        else
-        {
-            setServerAmounts("Claro El Salvador");
-        }
+                else
+                {
+                    RetrievingAmounts = false;
+                    HideSwipe();
+                }
+            }
+        });
     }
 
 
@@ -1259,10 +1062,6 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         HashMap<String, String> MapToken = sessionManager.GetSecurityPin();
         securityPin = MapToken.get(SessionManager.KEY_PIN_CODE);
 
-        /*if (!TextUtils.isEmpty(securityPin))
-        {
-            securityPin = "";
-        }*/
 
         return securityPin;
     }
@@ -1422,84 +1221,18 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
             });
             alertDialog.show();
 
-
-            /*ProgressDialog = new ProgressDialog(Home.this);
-            ProgressDialog.setMessage(getString(R.string.dialog_signing_out));
-            ProgressDialog.show();
-            ProgressDialog.setCancelable(false);
-            ProgressDialog.setCanceledOnTouchOutside(false);
-
-            sessionManager.LogoutUser();
-            return true;*/
         }
         return super.onOptionsItemSelected(item);
     }
 
-
-    /**
-     * Method to verify google play services on the device
-     * */
-    private boolean checkPlayServices()
-    {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-
-        if (resultCode != ConnectionResult.SUCCESS)
-        {
-            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode))
-            {
-                GooglePlayServicesUtil.getErrorDialog(resultCode, this, PLAY_SERVICES_RESOLUTION_REQUEST).show();
-            }
-            else
-            {
-                /*Toast.makeText(getApplicationContext(), "This device is not supported.", Toast.LENGTH_LONG).show();
-                finish();*/
-                Log.i(TAG, "This device does not support Google Play Services");
-            }
-            return false;
-        }
-        return true;
-    }
-
-
-
-
-
-
-
-    public void setDefaultOperator(List<Operator> pListaOperadores)
-    {
-        try
-        {
-            if(pListaOperadores.size() > 0)
-            {
-                OperatorSelected = true;
-
-                Operator defaultOperator = pListaOperadores.get(0);
-
-                SelectedOperatorName = defaultOperator.getOperatorName();
-                mNMO = defaultOperator.getBrand();
-                String HexColor = defaultOperator.getHexColor();
-
-                //Se seterán los montos una vez que ya se obtuvieron los operadores
-                setServerAmounts("Claro El Salvador");
-
-            }
-
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace();
-        }
-    }
 
     public void ResetDefaults(List<Operator> pListaOperadores)
     {
         try
         {
             txtPhoneNumber.setText("");
-            //GridView
-            //setOperators();
-
+            lblSelectedAmount.setText(R.string.label_select);
+            mSelectedAmunt = null;
         }
         catch (Exception ex)
         {
@@ -1555,7 +1288,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
 
                         RetrieveSavedToken();
 
-                        retrieveOperators();
+                        RetrieveAmounts();
 
                         promotionsHandler.retrievePromotions();
                     }

@@ -76,7 +76,8 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="95dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_height="90dp"
                                 android:weightSum="4">
 
                                 <LinearLayout
@@ -163,13 +164,16 @@
                                 </LinearLayout>
                             </LinearLayout>
 
+                            <View style="@style/horizontalGrayLine"/>
+
                             <!--Contenedor del Numero a Recargar-->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:paddingTop="20dp">
+                                android:layout_marginBottom="20dp"
+                                android:paddingTop="10dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -230,6 +234,8 @@
 
                             </LinearLayout>
 
+                            <View style="@style/horizontalGrayLine"/>
+
                             <!--Contenedor de Monto de Recarga-->
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -239,7 +245,7 @@
                                 android:paddingBottom="16dp"
                                 android:paddingLeft="16dp"
                                 android:paddingRight="16dp"
-                                android:paddingTop="20dp">
+                                android:paddingTop="10dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -249,11 +255,24 @@
                                     android:textColor="@color/SubtitleTextColor"
                                     android:textSize="14sp" />
 
-                                <Spinner
-                                    android:id="@+id/spMontoRecarga"
+                                <View style="@style/ultraLightGrayLine"/>
+
+                                <LinearLayout
+                                    android:id="@+id/lnrSelectAmount"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal" />
+                                    android:layout_height="37dp"
+                                    android:background="?attr/selectableItemBackground"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/lblSelectedAmount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/label_select"
+                                        android:textSize="16sp"/>
+                                </LinearLayout>
+
+                                <View style="@style/ultraLightGrayLine"/>
 
 
                             </LinearLayout>
@@ -279,12 +298,16 @@
 
                                 <Button
                                     android:id="@+id/btnEnvar"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="40dp"
                                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                                    android:background="@drawable/btn_effect_ripple_rocket_red"
+                                    android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
                                     android:clickable="true"
+                                    android:paddingStart="70dp"
+                                    android:paddingLeft="70dp"
+                                    android:paddingEnd="70dp"
+                                    android:paddingRight="70dp"
                                     android:onClick="RequestTopUp"
                                     android:text="Enviar Recarga"
                                     android:textColor="@color/ActivityWhiteBackground" />
@@ -312,7 +335,7 @@
             android:id="@+id/navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="start"></android.support.design.widget.NavigationView>
+            android:layout_gravity="start" />
 
     </android.support.design.widget.NavigationView>
 
