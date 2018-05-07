@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/SuperUltraLightGray"
+    tools:context="com.globalpaysolutions.yovendorecarga.FragmentEstadoCuenta">
+
+    <TextView
+        android:id="@+id/lblSaleAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Saldo Vendido:"
+        android:textColor="@color/color_claro_black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="183dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/btn_effect_ripple_white_rounded_corners"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/lblSaleAmount"
+        app:layout_constraintStart_toEndOf="@+id/lblSaleAmount"
+        app:layout_constraintTop_toTopOf="@+id/lblSaleAmount">
+
+        <TextView
+            android:id="@+id/tvSaleAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/color_claro_red"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="$175.00" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/lblComission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Comisión (5%):"
+        android:textColor="@color/color_claro_black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSaleAmount" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="183dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_effect_ripple_white_rounded_corners"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/lblComission"
+        app:layout_constraintStart_toEndOf="@+id/lblComission"
+        app:layout_constraintTop_toTopOf="@+id/lblComission">
+
+        <TextView
+            android:id="@+id/tvComissionAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/color_claro_red"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="$8.75" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/MainTitleTextColor"
+        android:text="Total a Cancelar:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblComission" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_effect_ripple_white_rounded_corners"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/color_claro_black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="$166.25" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view2"
+        style="@style/horizontalGrayLine"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <TextView
+        android:id="@+id/lblDailyPromedy"
+        android:layout_width="118dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Promedio diario de venta:"
+        android:textColor="@color/color_claro_black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <TextView
+        android:id="@+id/tvSalesPromedy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lblDailyPromedy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toEndOf="@+id/lblDailyPromedy"
+        app:layout_constraintTop_toTopOf="@+id/lblDailyPromedy"
+        tools:text="$55.00" />
+
+    <TextView
+        android:id="@+id/lblCreditLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Límite de Crédito"
+        android:textColor="@color/color_claro_black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/lblDailyPromedy"
+        app:layout_constraintTop_toBottomOf="@+id/lblDailyPromedy" />
+
+    <TextView
+        android:id="@+id/tvCreditLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lblCreditLimit"
+        app:layout_constraintStart_toStartOf="@+id/tvSalesPromedy"
+        app:layout_constraintTop_toTopOf="@+id/lblCreditLimit"
+        tools:text="$200.00" />
+
+</android.support.constraint.ConstraintLayout>

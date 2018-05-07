@@ -463,6 +463,11 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                         startActivity(history);
                         return true;
 
+                    case R.id.EstadoCuenta:
+                        drawerLayout.closeDrawers();
+                        Intent estadoCuenta = new Intent(getApplication().getApplicationContext(), EstadoCuenta.class);
+                        startActivity(estadoCuenta);
+                        return true;
 
                     case R.id.Perfil:
                         drawerLayout.closeDrawers();
