@@ -111,7 +111,7 @@
                 android:text="@string/btn_accept"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/btn_effect_ripple_green"
+                android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
                 android:textColor="@color/ActivityWhiteBackground"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

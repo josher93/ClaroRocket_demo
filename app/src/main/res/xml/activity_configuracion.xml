@@ -20,17 +20,12 @@
                     android:value="PIN"/>
             </intent>-->
         </Preference>
-        <Preference
+        <!--<Preference
             android:key="con_pass"
             android:summary="@string/preference_pass_summary"
             android:title="@string/preference_pass_title">
 
-            <!--<intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://yovendorecarga.com/SV/Account/Forgotpassword" >
-
-            </intent>-->
-        </Preference>
+        </Preference>-->
 
     </PreferenceCategory>
     <PreferenceCategory
@@ -47,11 +42,6 @@
 <!--            <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://yovendorecarga.com/SV/home/terminos" />-->
-        </Preference>
-        <Preference
-            android:key="yvs_califica"
-            android:summary="@string/preference_rating_summary"
-            android:title="@string/preference_rating">
         </Preference>
 
     </PreferenceCategory>

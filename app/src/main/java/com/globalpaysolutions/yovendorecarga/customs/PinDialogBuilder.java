@@ -110,16 +110,6 @@ public class PinDialogBuilder extends AlertDialog
 
         });
 
-        /*this.setOnCancelListener(new DialogInterface.OnCancelListener()
-        {
-            @Override
-            public void onCancel(DialogInterface dialog)
-            {
-                ((Activity) _context).finish();
-            }
-        });*/
-
-
     }
 
     /*public AlertDialog AskPINDialog(boolean pFromTopup, String pPhone)

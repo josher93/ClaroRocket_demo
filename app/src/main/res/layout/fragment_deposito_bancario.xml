@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/btn_effect_ripple_green"
+                android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
                 android:clickable="true"
                 android:text="Enviar"
                 android:textColor="@color/ActivityWhiteBackground"/>

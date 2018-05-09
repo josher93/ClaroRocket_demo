@@ -68,16 +68,29 @@
                             android:layout_height="fill_parent"
                             android:orientation="vertical">
 
-
-                            <ImageView
+                            <RelativeLayout
+                                android:background="@color/color_claro_red_dark"
+                                android:gravity="center"
                                 android:layout_width="match_parent"
-                                android:layout_height="150dp"
-                                android:background="@color/color_claro_red_dark" />
+                                android:layout_height="160dp">
+
+                                <android.support.v4.view.ViewPager
+                                    android:id="@+id/pager"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentTop="true" />
+
+                                <me.relex.circleindicator.CircleIndicator
+                                    android:id="@+id/indicator"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="48dp"
+                                    android:layout_alignParentBottom="true" />
+                            </RelativeLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
+                                android:layout_height="120dp"
                                 android:layout_marginBottom="5dp"
-                                android:layout_height="90dp"
                                 android:weightSum="4">
 
                                 <LinearLayout
@@ -90,7 +103,7 @@
                                     android:paddingEnd="16dp"
                                     android:paddingLeft="16dp"
                                     android:paddingStart="16dp"
-                                    android:paddingTop="8dp">
+                                    android:paddingTop="16dp">
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -99,7 +112,7 @@
                                         android:layout_marginBottom="20dp"
                                         android:text="Saldo Vendido: "
                                         android:textColor="@color/color_claro_black"
-                                        android:textSize="16sp"
+                                        android:textSize="18sp"
                                         android:textStyle="bold" />
 
                                     <TextView
@@ -108,7 +121,7 @@
                                         android:layout_gravity="end"
                                         android:text="Comisión (5%):"
                                         android:textColor="@color/color_claro_black"
-                                        android:textSize="16sp"
+                                        android:textSize="18sp"
                                         android:textStyle="bold" />
                                 </LinearLayout>
 
@@ -122,11 +135,12 @@
                                     android:paddingEnd="16dp"
                                     android:paddingLeft="16dp"
                                     android:paddingStart="16dp"
-                                    android:paddingTop="8dp">
+                                    android:paddingTop="16dp">
 
                                     <RelativeLayout
+                                        android:id="@+id/panelSaldoVendido"
                                         android:layout_width="120dp"
-                                        android:layout_height="30dp"
+                                        android:layout_height="38dp"
                                         android:layout_marginBottom="12dp"
                                         android:background="@drawable/custom_white_edittext_rounded_corners"
                                         android:gravity="center">
@@ -138,14 +152,15 @@
                                             android:inputType="none"
                                             android:text="$ 175.00"
                                             android:textColor="@color/color_claro_red"
-                                            android:textSize="16sp"
+                                            android:textSize="18sp"
                                             android:textStyle="bold" />
 
                                     </RelativeLayout>
 
                                     <RelativeLayout
+                                        android:id="@+id/panelComision"
                                         android:layout_width="120dp"
-                                        android:layout_height="30dp"
+                                        android:layout_height="38dp"
                                         android:background="@drawable/custom_white_edittext_rounded_corners"
                                         android:gravity="center">
 
@@ -153,10 +168,9 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:gravity="center"
-                                            android:inputType="none"
                                             android:text="$ 8.75"
                                             android:textColor="@color/color_claro_red"
-                                            android:textSize="16sp"
+                                            android:textSize="18sp"
                                             android:textStyle="bold" />
 
                                     </RelativeLayout>
@@ -164,15 +178,15 @@
                                 </LinearLayout>
                             </LinearLayout>
 
-                            <View style="@style/horizontalGrayLine"/>
+                            <View style="@style/horizontalGrayLine" />
 
                             <!--Contenedor del Numero a Recargar-->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="20dp"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:layout_marginBottom="20dp"
                                 android:paddingTop="10dp">
 
                                 <TextView
@@ -234,7 +248,7 @@
 
                             </LinearLayout>
 
-                            <View style="@style/horizontalGrayLine"/>
+                            <View style="@style/horizontalGrayLine" />
 
                             <!--Contenedor de Monto de Recarga-->
                             <LinearLayout
@@ -255,7 +269,7 @@
                                     android:textColor="@color/SubtitleTextColor"
                                     android:textSize="14sp" />
 
-                                <View style="@style/ultraLightGrayLine"/>
+                                <View style="@style/ultraLightGrayLine" />
 
                                 <LinearLayout
                                     android:id="@+id/lnrSelectAmount"
@@ -269,10 +283,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/label_select"
-                                        android:textSize="16sp"/>
+                                        android:textSize="16sp" />
                                 </LinearLayout>
 
-                                <View style="@style/ultraLightGrayLine"/>
+                                <View style="@style/ultraLightGrayLine" />
 
 
                             </LinearLayout>
@@ -304,11 +318,11 @@
                                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                                     android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
                                     android:clickable="true"
-                                    android:paddingStart="70dp"
-                                    android:paddingLeft="70dp"
-                                    android:paddingEnd="70dp"
-                                    android:paddingRight="70dp"
                                     android:onClick="RequestTopUp"
+                                    android:paddingEnd="70dp"
+                                    android:paddingLeft="70dp"
+                                    android:paddingRight="70dp"
+                                    android:paddingStart="70dp"
                                     android:text="Enviar Recarga"
                                     android:textColor="@color/ActivityWhiteBackground" />
 

@@ -73,5 +73,6 @@
     <color name="color_claro_red_dark">#b42225</color>
     <color name="color_claro_red_pressed">#e25255</color>
     <color name="color_claro_black">#434343</color>
+    <color name="color_claro_gray">#707070</color>
 
 </resources>

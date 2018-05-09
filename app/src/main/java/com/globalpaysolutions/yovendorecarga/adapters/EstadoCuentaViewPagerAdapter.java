@@ -7,10 +7,46 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.globalpaysolutions.yovendorecarga.FragmentEstadoCuenta;
 import com.globalpaysolutions.yovendorecarga.FragmentHistorialCobros;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EstadoCuentaViewPagerAdapter extends FragmentStatePagerAdapter
 {
-    private CharSequence mTitles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
-    private int mNumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
+    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
+
+    public EstadoCuentaViewPagerAdapter(FragmentManager manager)
+    {
+        super(manager);
+    }
+
+    @Override
+    public Fragment getItem(int position)
+    {
+        return mFragmentList.get(position);
+    }
+
+    @Override
+    public int getCount()
+    {
+        return mFragmentList.size();
+    }
+
+    public void addFragment(Fragment fragment, String title)
+    {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position)
+    {
+        return mFragmentTitleList.get(position);
+    }
+
+
+    /*private CharSequence mTitles[];
+    private int mNumbOfTabs;
 
     public EstadoCuentaViewPagerAdapter(FragmentManager fm, CharSequence mTitles[], int mNumbOfTabsumb)
     {
@@ -37,19 +73,17 @@ public class EstadoCuentaViewPagerAdapter extends FragmentStatePagerAdapter
 
     }
 
-    // This method return the titles for the Tabs in the Tab Strip
     @Override
     public CharSequence getPageTitle(int position)
     {
         return mTitles[position];
     }
 
-    // This method return the Number of tabs for the tabs Strip
+
     @Override
     public int getCount()
     {
         return mNumbOfTabs;
-    }
-
+    }*/
 
 }

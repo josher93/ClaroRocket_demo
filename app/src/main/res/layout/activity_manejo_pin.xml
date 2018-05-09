@@ -13,7 +13,7 @@
         android:id="@+id/toolbarManejoPIN"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/ApplicationGreenTheme"
+        android:background="@color/color_claro_red"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat"
         app:theme="@style/ToolbarTheme" />

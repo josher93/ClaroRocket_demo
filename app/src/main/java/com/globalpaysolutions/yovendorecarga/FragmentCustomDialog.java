@@ -114,7 +114,7 @@ public class FragmentCustomDialog extends DialogFragment
             }
         }
 
-        Drawable buttonColor = (!sessionManager.isFacebookShareAllowed()) ? getResources().getDrawable(R.drawable.btn_effect_ripple_green) : getResources().getDrawable(R.drawable.btn_effect_ripple_facebook);
+        Drawable buttonColor = (!sessionManager.isFacebookShareAllowed()) ? getResources().getDrawable(R.drawable.btn_effect_ripple_rocket_red_rounded) : getResources().getDrawable(R.drawable.btn_effect_ripple_facebook);
         dismiss.setBackgroundDrawable(buttonColor);
 
         dismiss.setText(Button);

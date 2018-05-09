@@ -74,7 +74,7 @@
             android:gravity="center" >
 
             <Button
-                android:background="@drawable/btn_effect_ripple_green"
+                android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
                 android:textColor="@color/ActivityWhiteBackground"
                 android:id="@+id/btnAcceptTopup"
                 android:layout_width="wrap_content"

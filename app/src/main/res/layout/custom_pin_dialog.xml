@@ -9,7 +9,7 @@
         android:id="@+id/toolbarPin"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/ApplicationGreenTheme"
+        android:background="@color/color_claro_red"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat"
         app:theme="@style/ToolbarTheme">
@@ -100,7 +100,7 @@
             android:text="Aceptar"
             android:layout_gravity="right"
             android:layout_marginTop="@dimen/ActivityVerticalCustomMargin"
-            android:background="@drawable/btn_effect_ripple_green"
+            android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
             android:textColor="@color/ActivityWhiteBackground"
             android:onClick="SetPinCode"
             android:layout_width="wrap_content"

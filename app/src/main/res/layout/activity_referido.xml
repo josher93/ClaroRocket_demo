@@ -108,7 +108,7 @@
                 android:paddingLeft="@dimen/ActivityHorizontalCustomMargin"
                 android:paddingRight="@dimen/ActivityHorizontalCustomMargin"
                 android:textColor="@color/ActivityWhiteBackground"
-                android:background="@drawable/btn_effect_ripple_green"
+                android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
                 android:onClick="enviarReferido"
                 android:text="@string/button_reffer_send"/>
 

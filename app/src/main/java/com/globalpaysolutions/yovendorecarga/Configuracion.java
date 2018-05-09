@@ -68,49 +68,6 @@ public class Configuracion extends AppCompatActivity
             sessionManager = new SessionManager(getActivity());
             final String iso2Code = sessionManager.getIso2Code();
 
-            Preference prefCalifica = findPreference("yvs_califica");
-            prefCalifica.setOnPreferenceClickListener (new Preference.OnPreferenceClickListener(){
-                public boolean onPreferenceClick(Preference preference)
-                {
-                    final String appPackageName = getActivity().getPackageName(); // getPackageName() from Context or Activity  object
-                    try
-                    {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                    }
-                    catch (android.content.ActivityNotFoundException anfe)
-                    {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
-                    }
-
-                    return false;
-                }
-            });
-
-            Preference prefPass = findPreference("con_pass");
-            prefPass.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-            {
-                @Override
-                public boolean onPreferenceClick(Preference preference)
-                {
-                    try
-                    {
-                        String url = "https://yovendorecarga.com/" + iso2Code + "/Account/Forgotpassword";
-                        Uri webpage = Uri.parse(url);
-                        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-                        if (intent.resolveActivity(getActivity().getPackageManager()) != null)
-                        {
-                            startActivity(intent);
-                            Log.i(TAG, "Opening URL: " + webpage);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        ex.printStackTrace();
-                    }
-
-                    return false;
-                }
-            });
 
             Preference prefPoliticas = findPreference("yvs_politicas");
             prefPoliticas.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()

@@ -12,7 +12,7 @@
         android:id="@+id/toolbarFavs"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/ApplicationGreenTheme"
+        android:background="@color/color_claro_red"
         android:elevation="4dp">
 
         <android.support.constraint.ConstraintLayout
@@ -169,7 +169,7 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:background="@drawable/btn_effect_ripple_green"
+            android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
             android:text="Agregar"
             android:textColor="@color/ActivityWhiteBackground"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -199,7 +199,7 @@
         android:gravity="center"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:background="@drawable/btn_effect_ripple_green"
+        android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
         android:textColor="@color/ActivityWhiteBackground"
         android:visibility="gone"
         android:layout_width="wrap_content"

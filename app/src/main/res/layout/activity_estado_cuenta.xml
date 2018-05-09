@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,15 +7,24 @@
     android:orientation="vertical"
     tools:context="com.globalpaysolutions.yovendorecarga.EstadoCuenta">
 
-
     <android.support.v7.widget.Toolbar
-        android:id="@+id/historyToolbar"
+        android:id="@+id/estadoCuentaToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_claro_red"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat"
         app:theme="@style/ToolbarTheme">
+
+        <ImageView
+            android:id="@+id/tbLogo"
+            android:layout_width="195dp"
+            android:layout_height="23dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-56dp"
+            android:layout_marginStart="-56dp"
+            android:src="@drawable/logo_horizontal" />
+
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -25,18 +33,16 @@
         android:orientation="vertical"
         tools:context="com.android.yovendosaldo.HistorialTabHost">
 
-        <com.globalpaysolutions.yovendorecarga.customs.SlidingTabLayout
+        <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="66dp"
-            android:background="@color/SuperUltraLightGray"
-            />
+            android:background="@color/SuperUltraLightGray2" />
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="match_parent" >
 
         </android.support.v4.view.ViewPager>
 

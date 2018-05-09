@@ -12,11 +12,13 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -36,7 +38,6 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,10 +64,10 @@ import com.android.yovendosaldo.BuildConfig;
 import com.android.yovendosaldo.R;
 import com.globalpaysolutions.yovendorecarga.adapters.AmountSpinnerAdapter;
 import com.globalpaysolutions.yovendorecarga.adapters.OperatorsAdapter;
+import com.globalpaysolutions.yovendorecarga.adapters.SliderAdapter;
 import com.globalpaysolutions.yovendorecarga.customs.CustomFullScreenDialog;
 import com.globalpaysolutions.yovendorecarga.customs.Data;
 import com.globalpaysolutions.yovendorecarga.customs.DatabaseHandler;
-import com.globalpaysolutions.yovendorecarga.customs.NicknameDialogBuilder;
 import com.globalpaysolutions.yovendorecarga.customs.PinDialogBuilder;
 import com.globalpaysolutions.yovendorecarga.customs.PromotionsHandler;
 import com.globalpaysolutions.yovendorecarga.customs.SessionManager;
@@ -82,9 +83,6 @@ import com.globalpaysolutions.yovendorecarga.model.OperatorsBalanceModel;
 import com.globalpaysolutions.yovendorecarga.model.TopupModel;
 import com.globalpaysolutions.yovendorecarga.model.TopupResult;
 import com.globalpaysolutions.yovendorecarga.rest.ApiClient;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.vision.text.Line;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -93,10 +91,14 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.Body;
@@ -130,6 +132,8 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     ImageButton ibContacts;
     ImageButton ibFavorites;
     TextView lblSelectedAmount;
+    RelativeLayout panelSaldoVendido;
+    RelativeLayout panelComision;
 
     //Objetos para el Drawer
     private NavigationView navigationView;
@@ -142,7 +146,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     public static String Token;
     boolean OperatorSelected = false;
     boolean RetrievingAmounts = false;
-    String SelectedOperatorName;
+    String SelectedOperatorName = "Claro";
     //int AmountTopup;
     double AmountTopup;
     int PackageCode;
@@ -210,6 +214,28 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
             }
         });
 
+        panelSaldoVendido = (RelativeLayout) findViewById(R.id.panelSaldoVendido);
+        panelSaldoVendido.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent historial = new Intent(Home.this, HistorialVentas.class);
+                startActivity(historial);
+            }
+        });
+
+        panelComision = (RelativeLayout) findViewById(R.id.panelComision);
+        panelComision.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent estadoCuenta = new Intent(Home.this, EstadoCuenta.class);
+                startActivity(estadoCuenta);
+            }
+        });
+
         isFirstTime = sessionManager.IsFirstTime();
         homeActivity = this;
 
@@ -257,7 +283,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         *   SWIPEREFRESH
         *
         */
-        SwipeRefresh.setColorSchemeResources(R.color.refresh_progress_1, R.color.refresh_progress_2, R.color.refresh_progress_3);
+        SwipeRefresh.setColorSchemeResources(R.color.color_claro_red, R.color.color_claro_red_pressed, R.color.color_claro_red_dark);
         SwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
         {
             @Override
@@ -304,6 +330,9 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
             }
         });
 
+
+
+        initializeSlider();
 
     }
 
@@ -378,6 +407,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                 {
                     String amountName = mAmountNames.get(i);
                     mSelectedAmunt = mAmountsMap.get(amountName);
+                    SelectedAmuntItemDisplay = mSelectedAmunt.getDisplay();
                 }
             });
 
@@ -475,6 +505,12 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                         startActivity(perfil);
                         return true;
 
+                    case R.id.Configuracion:
+                        drawerLayout.closeDrawers();
+                        Intent conf = new Intent(getApplication().getApplicationContext(), Configuracion.class);
+                        startActivity(conf);
+                        return true;
+
 
 
                     default:
@@ -524,7 +560,6 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     {
 
         EnableTopupButton(false);
-        Log.i("Print click", "Para saber cuantas veces se ha hecho click en el botón.");
 
         final String PhoneNumber = txtPhoneNumber.getText().toString();
 
@@ -798,10 +833,6 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
 
                 //TODO: Quitar comentario
                 CustomDialogCreator.CreateFullScreenDialog(Titulo, Linea1 + " " + Linea2, null, null, Button, "NAVIGATEHOME", true, true, null);
-                //Bundle xtraValues = new Bundle();
-                //xtraValues.putBoolean("shareOnFacebook", true);
-                //xtraValues.putString("lastSaleOperator", SelectedOperatorName);
-                //CustomDialogCreator.CreateFullScreenDialog(Titulo, Linea1 + " " + Linea2, null, null, buttonText, "NEWACTION", true, true, xtraValues);
 
                 break;
             default:
@@ -1031,12 +1062,6 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
 
         if (!validator.IsPhoneNumber(txtPhoneNumber, true))
         {
-            ret = false;
-        }
-
-        if (!OperatorSelected)
-        {
-            Toast.makeText(Home.this, getResources().getString(R.string.validation_required_operator), Toast.LENGTH_LONG).show();
             ret = false;
         }
 
@@ -1558,6 +1583,41 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
             df.dismiss();
         }
 
+    }
+
+
+    //private ViewPager mPager;
+    private static int currentPage = 0;
+    private static final Integer[] slideImages = {R.drawable.banner1,
+            R.drawable.banner2, R.drawable.banner3, R.drawable.banner4, R.drawable.banner5};
+    private ArrayList<Integer> imagesArray = new ArrayList<Integer>();
+
+    private void initializeSlider()
+    {
+        imagesArray.addAll(Arrays.asList(slideImages));
+
+        final ViewPager mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(new SliderAdapter(this, imagesArray));
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(mPager);
+
+        // Auto start of viewpager
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == slideImages.length) {
+                    currentPage = 0;
+                }
+                mPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 2850, 2850);
     }
 
     public interface ApiInterface

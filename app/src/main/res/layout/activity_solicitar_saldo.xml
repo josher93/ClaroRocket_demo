@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:onClick="AskConfirmationDialog"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_effect_ripple_green"
+        android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
         android:clickable="true"
         android:text="@string/request_airtime"
         android:textColor="@color/ActivityWhiteBackground"/>
