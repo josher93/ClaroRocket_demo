@@ -14,17 +14,18 @@ import android.widget.Toast;
 
 import com.android.yovendosaldo.R;
 import com.globalpaysolutions.yovendorecarga.adapters.PaymentsAdapter;
-import com.globalpaysolutions.yovendorecarga.model.BillPayment;
+import com.globalpaysolutions.yovendorecarga.model.rest.RocketBalanceList;
+import com.globalpaysolutions.yovendorecarga.presenters.EstadoCuentaPresenterImpl;
+import com.globalpaysolutions.yovendorecarga.views.EstadoCuentaView;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class FragmentHistorialCobros extends Fragment
+public class FragmentHistorialCobros extends Fragment implements EstadoCuentaView
 {
     private static final String TAG = FragmentHistorialCobros.class.getSimpleName();
     ListView lvBillings;
     PaymentsAdapter mAdapter;
+    EstadoCuentaPresenterImpl mPresenter;
 
     public FragmentHistorialCobros()
     {
@@ -41,56 +42,13 @@ public class FragmentHistorialCobros extends Fragment
         mAdapter = new PaymentsAdapter(getContext(), R.layout.custom_billing_history_item);
         lvBillings.setAdapter(mAdapter);
 
+        mPresenter = new EstadoCuentaPresenterImpl(getActivity().getApplicationContext(), this);
+        mPresenter.presentSavedHistory();
+
         if(checkConnection())
-            requestPaymentsHistory();
+            mPresenter.retrievePaymentsHistory();
 
         return view;
-    }
-
-    private void requestPaymentsHistory()
-    {
-        try
-        {
-            List<BillPayment> paymentList = new ArrayList<>();
-
-            BillPayment payment3 = new BillPayment();
-            payment3.setId(1);
-            payment3.setPayment(10.25);
-            payment3.setDebt(0);
-            payment3.setDate(new Date());
-            paymentList.add(payment3);
-
-            BillPayment payment2 = new BillPayment();
-            payment2.setId(1);
-            payment2.setPayment(60.54);
-            payment2.setDebt(0);
-            payment2.setDate(new Date());
-            paymentList.add(payment2);
-
-            BillPayment payment1 = new BillPayment();
-            payment1.setId(1);
-            payment1.setPayment(183.34);
-            payment1.setDebt(0);
-            payment1.setDate(new Date());
-            paymentList.add(payment1);
-
-            BillPayment payment4 = new BillPayment();
-            payment4.setId(1);
-            payment4.setPayment(254.64);
-            payment4.setDebt(0);
-            payment4.setDate(new Date());
-            paymentList.add(payment4);
-
-            for (BillPayment item : paymentList)
-            {
-                mAdapter.add(item);
-            }
-
-        }
-        catch (Exception ex)
-        {
-            Log.e(TAG, "Error: " + ex.getMessage());
-        }
     }
 
     private boolean checkConnection()
@@ -136,5 +94,69 @@ public class FragmentHistorialCobros extends Fragment
             }
         }
         return haveConnectedWifi || haveConnectedMobile;
+    }
+
+    @Override
+    public void presentBalance(String profit, String balance, int balanceID)
+    {
+
+    }
+
+    @Override
+    public void renderPaymentsHistory(List<RocketBalanceList> rocketBalanceList)
+    {
+        try
+        {
+            for(RocketBalanceList item : rocketBalanceList)
+            {
+                mAdapter.add(item);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, "Error: " + ex.getMessage());
+        }
+    }
+
+    @Override
+    public void showConfirmPaymentDialog(String title, String content)
+    {
+
+    }
+
+    @Override
+    public void setPaymentButtonEnabled(boolean enabled)
+    {
+
+    }
+
+    @Override
+    public void showPinCodeInputDialgo()
+    {
+
+    }
+
+    @Override
+    public void dismissPinCodeInputDialog()
+    {
+
+    }
+
+    @Override
+    public void showGenericDialog(String title, String content)
+    {
+
+    }
+
+    @Override
+    public void showLoadingDialg(String label)
+    {
+
+    }
+
+    @Override
+    public void hideLoadingDialog()
+    {
+
     }
 }

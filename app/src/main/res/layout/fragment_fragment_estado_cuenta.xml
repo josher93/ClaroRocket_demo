@@ -121,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvTotalPayment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -132,11 +132,30 @@
             tools:text="$166.25" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnPayBill"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
+        android:gravity="center"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"
+        android:text="Realizar Pago"
+        android:textColor="@color/ActivityWhiteBackground"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
     <View
         android:id="@+id/view2"
         style="@style/horizontalGrayLine"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPayBill" />
 
     <TextView
         android:id="@+id/lblDailyPromedy"
@@ -149,6 +168,7 @@
         android:textColor="@color/color_claro_black"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -164,6 +184,7 @@
         android:layout_marginTop="8dp"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/lblDailyPromedy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
@@ -180,6 +201,7 @@
         android:textColor="@color/color_claro_black"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/lblDailyPromedy"
         app:layout_constraintTop_toBottomOf="@+id/lblDailyPromedy" />
 
@@ -189,6 +211,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/lblCreditLimit"
         app:layout_constraintStart_toStartOf="@+id/tvSalesPromedy"
         app:layout_constraintTop_toTopOf="@+id/lblCreditLimit"

@@ -110,7 +110,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="end"
                                         android:layout_marginBottom="20dp"
-                                        android:text="Saldo Vendido: "
+                                        android:text="Saldo Vendido:"
                                         android:textColor="@color/color_claro_black"
                                         android:textSize="18sp"
                                         android:textStyle="bold" />
@@ -146,11 +146,11 @@
                                         android:gravity="center">
 
                                         <TextView
+                                            android:id="@+id/tvSold"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:gravity="center"
                                             android:inputType="none"
-                                            android:text="$ 175.00"
                                             android:textColor="@color/color_claro_red"
                                             android:textSize="18sp"
                                             android:textStyle="bold" />
@@ -165,10 +165,10 @@
                                         android:gravity="center">
 
                                         <TextView
+                                            android:id="@+id/tvProfit"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:gravity="center"
-                                            android:text="$ 8.75"
                                             android:textColor="@color/color_claro_red"
                                             android:textSize="18sp"
                                             android:textStyle="bold" />

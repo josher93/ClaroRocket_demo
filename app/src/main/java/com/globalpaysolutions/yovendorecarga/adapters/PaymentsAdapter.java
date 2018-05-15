@@ -11,11 +11,15 @@ import android.widget.TextView;
 
 import com.android.yovendosaldo.R;
 import com.globalpaysolutions.yovendorecarga.model.BillPayment;
+import com.globalpaysolutions.yovendorecarga.model.rest.RocketBalanceList;
+import com.globalpaysolutions.yovendorecarga.model.rest.RocketBalanceResponse;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
-public class PaymentsAdapter extends ArrayAdapter<BillPayment>
+public class PaymentsAdapter extends ArrayAdapter<RocketBalanceList>
 {
     private Context mContext;
     private int mAdapterResource;
@@ -33,7 +37,7 @@ public class PaymentsAdapter extends ArrayAdapter<BillPayment>
     {
         View row = convertView;
 
-        final BillPayment currentItem = getItem(position);
+        final RocketBalanceList currentItem = getItem(position);
 
         if(row == null)
         {
@@ -53,11 +57,15 @@ public class PaymentsAdapter extends ArrayAdapter<BillPayment>
 
             if(currentItem != null)
             {
-                tvId.setText(String.valueOf(currentItem.getId()));
-                tvPayment.setText("$".concat(String.valueOf(currentItem.getPayment())));
-                tvDebt.setText("$".concat(String.valueOf(currentItem.getDebt())));
-                tvDate.setText(new SimpleDateFormat("d'-'MMM'-'yy';' h:mm a", new Locale("es", "ES"))
-                        .format(currentItem.getDate()).toUpperCase());
+                tvId.setText("#".concat(String.valueOf(currentItem.getBalanceID())));
+                tvPayment.setText("$".concat(String.valueOf(currentItem.getBalanceAmount())));
+                tvDebt.setText("$".concat(String.valueOf(currentItem.getBalanceAmount())));
+
+                DateFormat originalformat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                SimpleDateFormat newFormat = new SimpleDateFormat("d'-'MMM'-'yy';' h:mm a", new Locale("es", "ES"));
+
+                String reformattedStr = newFormat.format(originalformat.parse(currentItem.getConciliationDate()));
+                tvDate.setText(reformattedStr.toUpperCase());
             }
         }
         catch(Exception ex)

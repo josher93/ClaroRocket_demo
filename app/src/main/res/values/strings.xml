@@ -371,5 +371,7 @@
     <string name="label_title_select_amount_dialog">Seleccione un monto</string>
     <string name="label_account_statement">Estado de Cuenta</string>
     <string name="label_billing_history">Historial de Pagos</string>
+    <string name="content_payment_master_security_code">Introducir el código de seguridad del rutero encargado del cobro del actual punto de venta (debe insertarlo el rutero)</string>
+    <string name="title_confirm_payment">¿Realizar pago ahora?</string>
 
 </resources>

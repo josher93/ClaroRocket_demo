@@ -327,37 +327,7 @@ public class Notificaciones extends AppCompatActivity
             SetProgressBarVisible(true);
         }
 
-        YVScomSingleton.getInstance(Notificaciones.this)
-                .addToRequestQueue(new JsonObjectRequest(
-                        Request.Method.GET,
-                        StringsURL.CEOA_NOTIFICATIONS_HISTORY,
-                        null,
-                        new Response.Listener<JSONObject>()
-                        {
-                            @Override
-                            public void onResponse(JSONObject response)
-                            {
-                                Log.d("Mensaje JSON ", response.toString());
-                                ProcessCEOANotificationsResponse(response);
-                            }
-                        }, new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        HandleVolleyError(error);
-                    }
-                })
-                {
-                    @Override
-                    public Map<String, String> getHeaders()
-                    {
-                        Map<String, String> headers = new HashMap<String, String>();
-                        headers.put("apikey", StringsURL.CEO_ANALYTICS_APIKEY);
-                        headers.put("Content-Type", "application/json; charset=utf-8");
-                        return headers;
-                    }
-                }, 1); //Parametro de número de re-intentos
+
     }
 
 

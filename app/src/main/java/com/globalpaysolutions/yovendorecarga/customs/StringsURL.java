@@ -24,7 +24,7 @@ public final class StringsURL
 
     //Direccion con cifrado
     //TODO: Cambiar a esta URL antes de publicar
-    private final static String URL_BASE = "https://api.yovendorecarga.com/";
+    public final static String URL_BASE = "https://api.yovendorecarga.com/Rocket/";
 
     //BEBUG::::
     //private final static String URL_BASE = "192.168.1.32:8082/";
@@ -99,6 +99,10 @@ public final class StringsURL
 
     public static final String FAVORITES_DELETE = URL_BASE + "FavoriteNumber/Delete";
 
+    public static final String ROCKET_BALANCE = "GetBalanceRocket";
+
+    public static final String ROCKET_PAYMENT = "GetPaymentHistory";
+
     /**
      *
      *
@@ -110,17 +114,11 @@ public final class StringsURL
     //public final static String CEO_ANALYTICS_URL_BASE = "http://csncusgats.cloudapp.net:8076/v1/";
 
     //Pre-Produccion
-    public final static String CEO_ANALYTICS_URL_BASE = "http://csncusgats.cloudapp.net:8077/v1/";
+
+    public static final String ROCKET_BALANCE_PAYMENT =  "rocketpayment";
 
 
     public static String CEO_ANALYTICS_APIKEY = "a1bXuav8tqtXQWPALOhdQJvAQ1IK8esE4d6YYGBk+qc=";
-
-    public final static String CEOA_NOTIFICATIONS_HISTORY = CEO_ANALYTICS_URL_BASE + "notificationshistory/android";
-
-    public final static String CEOA_DEVICE_DATA = CEO_ANALYTICS_URL_BASE + "api/devicedata";
-
-
-    public final static String CEO_MARK_NOTIFICATION_READ = CEO_ANALYTICS_URL_BASE + "setNotificationRead/";
 
 
     /*

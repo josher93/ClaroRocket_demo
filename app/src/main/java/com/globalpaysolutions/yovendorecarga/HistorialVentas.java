@@ -9,6 +9,10 @@ import com.android.yovendosaldo.R;
 import com.globalpaysolutions.yovendorecarga.adapters.ViewPagerHistAdapter;
 import com.globalpaysolutions.yovendorecarga.customs.SessionManager;
 import com.globalpaysolutions.yovendorecarga.customs.SlidingTabLayout;
+import com.globalpaysolutions.yovendorecarga.model.rest.RocketPaymentHistoryResponse;
+import com.globalpaysolutions.yovendorecarga.views.EstadoCuentaView;
+
+import java.util.List;
 
 public class HistorialVentas extends AppCompatActivity
 {
@@ -53,6 +57,5 @@ public class HistorialVentas extends AppCompatActivity
         sessionManager = new SessionManager(this);
 
     }
-
 
 }

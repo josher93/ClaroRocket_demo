@@ -63,7 +63,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.yovendosaldo.BuildConfig;
 import com.android.yovendosaldo.R;
 import com.globalpaysolutions.yovendorecarga.adapters.AmountSpinnerAdapter;
-import com.globalpaysolutions.yovendorecarga.adapters.OperatorsAdapter;
 import com.globalpaysolutions.yovendorecarga.adapters.SliderAdapter;
 import com.globalpaysolutions.yovendorecarga.customs.CustomFullScreenDialog;
 import com.globalpaysolutions.yovendorecarga.customs.Data;
@@ -82,7 +81,9 @@ import com.globalpaysolutions.yovendorecarga.model.OperatorsBalance;
 import com.globalpaysolutions.yovendorecarga.model.OperatorsBalanceModel;
 import com.globalpaysolutions.yovendorecarga.model.TopupModel;
 import com.globalpaysolutions.yovendorecarga.model.TopupResult;
+import com.globalpaysolutions.yovendorecarga.presenters.HomePresenterImpl;
 import com.globalpaysolutions.yovendorecarga.rest.ApiClient;
+import com.globalpaysolutions.yovendorecarga.views.HomeView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,10 +109,9 @@ import retrofit2.http.Url;
 
 
 
-public class Home extends AppCompatActivity implements FragmentFavoritos.FavoritesListener
+public class Home extends AppCompatActivity implements FragmentFavoritos.FavoritesListener, HomeView
 {
     //Adapters y Layouts
-    OperatorsAdapter OpeAdapter;
     AmountSpinnerAdapter AmountAdapter;
     GridView GridViewOperators;
     Spinner SpinnerAmount;
@@ -128,12 +128,13 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     //TextView tvCurrency;
     TextView tvVendorName;
     TextView tvVendorCode;
-    MenuItem drawerMenuItem;
     ImageButton ibContacts;
     ImageButton ibFavorites;
     TextView lblSelectedAmount;
     RelativeLayout panelSaldoVendido;
     RelativeLayout panelComision;
+    TextView tvSold;
+    TextView tvProfit;
 
     //Objetos para el Drawer
     private NavigationView navigationView;
@@ -161,6 +162,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     RealmDatabase realmBD;
     PromotionsHandler promotionsHandler;
     String SelectedAmuntItemDisplay;
+    HomePresenterImpl mPresenter;
 
     //Signal
     TelephonyManager mTelephonyManager;
@@ -194,6 +196,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         CustomDialogCreator = new CustomFullScreenDialog(Home.this, Home.this);
         db = new DatabaseHandler(Home.this);
         promotionsHandler = new PromotionsHandler(this, this);
+        mPresenter = new HomePresenterImpl(this, this, this);
 
         //Seteo de vistas y layouts globales
         SwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
@@ -213,6 +216,8 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                 displayAmounts();
             }
         });
+        tvSold = (TextView) findViewById(R.id.tvSold);
+        tvProfit = (TextView) findViewById(R.id.tvProfit);
 
         panelSaldoVendido = (RelativeLayout) findViewById(R.id.panelSaldoVendido);
         panelSaldoVendido.setOnClickListener(new View.OnClickListener()
@@ -331,6 +336,8 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         });
 
 
+        mPresenter.presentSavedBalance(); //Presents saved values
+        mPresenter.retrieveRocketBalance(); //Retrieves for updated values
 
         initializeSlider();
 
@@ -511,8 +518,6 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                         startActivity(conf);
                         return true;
 
-
-
                     default:
                         Toast.makeText(getApplicationContext(), "Somethings Wrong", Toast.LENGTH_SHORT).show();
                         return true;
@@ -676,7 +681,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
 
         //Making request to server
         TopupModel model = new TopupModel(SelectedOperatorName, CountryID);
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        ApiInterface apiService = ApiClient.getTopupClient().create(ApiInterface.class);
         Call<TopupResult> call = apiService.getTopupResult(TopupData, Token, model);
         Log.i(TAG, "Topup: " + TopupData);
 
@@ -1618,6 +1623,13 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                 handler.post(Update);
             }
         }, 2850, 2850);
+    }
+
+    @Override
+    public void displayBalance(String profit, String sold, String balance)
+    {
+        tvSold.setText(balance); //TODO: Poner el parametro correcto
+        tvProfit.setText(profit);
     }
 
     public interface ApiInterface

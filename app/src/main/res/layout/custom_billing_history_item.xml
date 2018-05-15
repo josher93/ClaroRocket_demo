@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/SuperUltraLightGray2"
-    android:gravity="center">
+    >
 
     <LinearLayout
+        android:id="@+id/mainContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="255dp"
@@ -203,4 +205,17 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <!--<Button
+        android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
+        android:textColor="@color/ActivityWhiteBackground"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/mainContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Realizar Pago"
+        android:paddingRight="22dp"
+        android:paddingLeft="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp" />-->
 </RelativeLayout>
