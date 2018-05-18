@@ -4,11 +4,11 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.globalpaysolutions.yovendorecarga.customs.Parsers;
 import com.globalpaysolutions.yovendorecarga.customs.SessionManager;
 import com.globalpaysolutions.yovendorecarga.interactors.HomeInteractor;
 import com.globalpaysolutions.yovendorecarga.interactors.HomeListener;
-import com.globalpaysolutions.yovendorecarga.model.SimpleResponse;
-import com.globalpaysolutions.yovendorecarga.model.rest.RocketBalanceResponse;
+import com.globalpaysolutions.yovendorecarga.model.rest.RocketSaleDetailResponse;
 import com.globalpaysolutions.yovendorecarga.presenters.interfaces.IHomePresenter;
 import com.globalpaysolutions.yovendorecarga.views.HomeView;
 
@@ -40,10 +40,16 @@ public class HomePresenterImpl implements IHomePresenter, HomeListener
     {
         try
         {
-            String profit = "$ ".concat(mFormatter.format(mSessionManager.getRocketPtofit()));
-            String balance = "$ ".concat(mFormatter.format(mSessionManager.getRocketBalance()));
+            float reconcilableAccount = mSessionManager.getReconcileAccount();
+            float sales = mSessionManager.getRocketSale();
 
-            mView.displayBalance(profit, "", balance);
+            float profit = sales - reconcilableAccount;
+
+            String profitDisplay = "$ ".concat(mFormatter.format(Parsers.floatToDouble(profit)));
+            String balance = "$ ".concat(mFormatter.format(reconcilableAccount));
+            String sold = "$ ".concat(mFormatter.format(sales));
+
+            mView.displayBalance(profitDisplay, sold, balance);
         }
         catch (Exception ex)
         {
@@ -57,30 +63,31 @@ public class HomePresenterImpl implements IHomePresenter, HomeListener
         mInteractor.retrieveBalance(this);
     }
 
+
+
     @Override
-    public void onRocketBalanceSuccess(RocketBalanceResponse response)
+    public void onSaleDetailSuccess(RocketSaleDetailResponse response)
     {
-        try
-        {
-            mSessionManager.saveRocketBalanceData(response.getBalanceID(),
-                    response.getBalanceAmount(), response.getFromDate(), response.getToDate(),
-                    response.getStatus(), response.getConciliationDate(), response.getProfit() );
+        mSessionManager.saveSaleDetail(response.getBalanceID(), response.getPersonMasterID(), response.getReceivable(), response.getReconcileCount(), response.getSale(), response.getDistributor(), response.getName(), response.getMinDate(), response.getMaxDate());
 
-            String profit = "$ ".concat(mFormatter.format(mSessionManager.getRocketPtofit()));
-            String balance = "$ ".concat(mFormatter.format(mSessionManager.getRocketBalance()));
+        float reconcilableAccount = mSessionManager.getReconcileAccount();
+        float sales = mSessionManager.getRocketSale();
 
-            mView.displayBalance(profit, "", balance);
+        float profit = sales - reconcilableAccount;
 
-        }
-        catch (Exception ex)
-        {
-            Log.e(TAG, "Error: " + ex.getMessage());
-        }
+        String profitDisplay = "$ ".concat(mFormatter.format(Parsers.floatToDouble(profit)));
+        String balance = "$ ".concat(mFormatter.format(reconcilableAccount));
+        String sold = "$ ".concat(mFormatter.format(sales));
+
+        mView.displayBalance(profitDisplay, sold, balance);
     }
 
     @Override
-    public void onRocketBalanceError(int codeStatus, SimpleResponse errorResponse, Throwable throwable)
+    public void onSaleDetailError(int code, Throwable throwable, String response)
     {
-        Log.e(TAG, "Error retrieving balances"); //TODO: Manejo de excepcion
+        if(response != null)
+            Log.e(TAG, "Error: code: " + String.valueOf(code) + ", Response: " + response);
+        else
+            Log.e(TAG, "Error: code " + String.valueOf(code));
     }
 }

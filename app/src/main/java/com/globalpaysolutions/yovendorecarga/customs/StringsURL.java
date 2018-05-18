@@ -24,7 +24,9 @@ public final class StringsURL
 
     //Direccion con cifrado
     //TODO: Cambiar a esta URL antes de publicar
-    public final static String URL_BASE = "https://api.yovendorecarga.com/Rocket/";
+    public final static String URL_BASE = "http://api.clarorocket.com/V1/Rocket/";
+
+    public static final String YVR_API = "https://api.yovendorecarga.com/";
 
     //BEBUG::::
     //private final static String URL_BASE = "192.168.1.32:8082/";
@@ -43,7 +45,7 @@ public final class StringsURL
 
     public final static String AUTH_SIGNIN = URL_BASE + "auth/signin/";
 
-    public final static String TOPUP = URL_BASE + "topup/";
+    public final static String TOPUP = YVR_API + "topup/";
 
     public final static String PASSWORD = URL_BASE + "password";
 
@@ -116,6 +118,7 @@ public final class StringsURL
     //Pre-Produccion
 
     public static final String ROCKET_BALANCE_PAYMENT =  "rocketpayment";
+    public static final String ROCKET_SALE_DETAIL = "getSaleDetail";
 
 
     public static String CEO_ANALYTICS_APIKEY = "a1bXuav8tqtXQWPALOhdQJvAQ1IK8esE4d6YYGBk+qc=";

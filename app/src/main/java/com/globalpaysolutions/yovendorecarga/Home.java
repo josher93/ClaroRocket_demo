@@ -296,6 +296,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
             {
                 ListaOperadores.clear();
                 RetrieveAmounts();
+                mPresenter.retrieveRocketBalance();
             }
         });
 
@@ -750,6 +751,9 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     //Procesa Respuesta de TopUp
     public void ProcessTopupResponse(TopupResult pResponse)
     {
+        //Gets sale Rocket's details
+        mPresenter.retrieveRocketBalance();
+
         //Restablece el scroll al tope despues de enviar recarga.
         scrollView.fullScroll(View.FOCUS_UP);
 
@@ -812,6 +816,9 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         String Linea2;
         String Button;
         ProgressDialog.dismiss();
+
+        //Gets Rockets sale detail
+        mPresenter.retrieveRocketBalance();
 
         switch (error)
         {
@@ -1628,7 +1635,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     @Override
     public void displayBalance(String profit, String sold, String balance)
     {
-        tvSold.setText(balance); //TODO: Poner el parametro correcto
+        tvSold.setText(sold);
         tvProfit.setText(profit);
     }
 

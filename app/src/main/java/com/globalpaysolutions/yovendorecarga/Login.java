@@ -270,6 +270,9 @@ public class Login extends AppCompatActivity
             PhoneCode =  SigninResponseObject.has("PhoneCode") ? SigninResponseObject.getString("PhoneCode") : "";
             VendorCode = SigninResponseObject.has("VendorCode") ? SigninResponseObject.getInt("VendorCode") : 0;
 
+
+            Log.i(TAG, "Token: " + Token);
+
             //Operators balance
             JSONArray operatorsBalance = SigninResponseObject.getJSONArray("OperatorsBalance");
             List<OperatorsBalance> operatorsBalanceList = new ArrayList<>();

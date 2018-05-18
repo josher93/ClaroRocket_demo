@@ -97,7 +97,7 @@ public class FragmentHistorialCobros extends Fragment implements EstadoCuentaVie
     }
 
     @Override
-    public void presentBalance(String profit, String balance, int balanceID)
+    public void presentBalance(String profit, String receivableAccount, String conciliation, String sold, int balanceID)
     {
 
     }
@@ -156,6 +156,12 @@ public class FragmentHistorialCobros extends Fragment implements EstadoCuentaVie
 
     @Override
     public void hideLoadingDialog()
+    {
+
+    }
+
+    @Override
+    public void displayRecivableGenerated()
     {
 
     }

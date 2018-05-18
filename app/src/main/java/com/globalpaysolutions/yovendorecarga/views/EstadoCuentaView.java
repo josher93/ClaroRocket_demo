@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EstadoCuentaView
 {
-    void presentBalance(String profit, String balance, int balanceID);
+    void presentBalance(String profit, String receivableAccount, String conciliation, String sold, int balanceID);
     void renderPaymentsHistory(List<RocketBalanceList> rocketBalanceList);
     void showConfirmPaymentDialog(String title, String content);
     void setPaymentButtonEnabled(boolean enabled);
@@ -15,4 +15,5 @@ public interface EstadoCuentaView
     void showGenericDialog(String title, String content);
     void showLoadingDialg(String label);
     void hideLoadingDialog();
+    void displayRecivableGenerated();
 }

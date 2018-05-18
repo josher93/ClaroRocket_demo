@@ -96,15 +96,25 @@ public class SessionManager
     private static final String KEY_MNO_PRODUCTS = "key_mno_products";
 
 
-    private static final String KEY_ROCKET_BALANCE_ID  = "key_rocket_balance_id";
-    private static final String KEY_ROCKET_BALANCE_AMOUNT = "key_rocket_balance_amount";
+
+   /* private static final String KEY_ROCKET_BALANCE_AMOUNT = "key_rocket_balance_amount";
     private static final String KEY_ROCKET_BALANCE_FROMDATE  = "key_rocket_balance_fromdate";
     private static final String KEY_ROCKET_BALANCE_TODATE  = "key_rocket_balance_todate";
     private static final String KEY_ROCKET_BALANCE_STATUS  = "key_rocket_balance_status";
     private static final String KEY_ROCKET_BALANCE_CONCILIATION_DATE  = "key_rocket_balance_conciliation_date";
-    private static final String KEY_ROCKET_BALANCE_PROFIT = "key_rocket_balance_profit";
+    private static final String KEY_ROCKET_BALANCE_PROFIT = "key_rocket_balance_profit";*/
 
     private static final String KEY_ROCKET_PAYMENTS_RESPONSE = "key_rocket_payments_response";
+
+    private static final String KEY_ROCKET_BALANCE_ID  = "key_rocket_balance_id";
+    private static final String KEY_ROCKET_POS_MASTER_ID = "key_rocket_pos_master_id";
+    private static final String KEY_ROCKET_RECIVABLE = "key_rocket_recivable";
+    private static final String KEY_ROCKET_RECONCILE_COUNT = "key_rocket_reconcile_count";
+    private static final String KEY_ROCKET_SALE = "key_rocket_sale";
+    private static final String KEY_ROCKET_DISTRIBUTOR = "key_rocket_distributor";
+    private static final String KEY_ROCKET_MIN_DATE = "key_rocket_min_date";
+    private static final String KEY_ROCKET_MAX_DATE = "key_rocket_max_date";
+
 
     public SessionManager(Context context)
     {
@@ -915,33 +925,6 @@ public class SessionManager
         return savedProducts;
     }
 
-    public void saveRocketBalanceData(int balanceID, double balanceAmount, String fromDate, String toDate, int status, String conciliationDate, double profit)
-    {
-        editor.putInt(KEY_ROCKET_BALANCE_ID, balanceID);
-        editor.putFloat(KEY_ROCKET_BALANCE_AMOUNT, Parsers.doubleToFloat(balanceAmount));
-        editor.putString(KEY_ROCKET_BALANCE_FROMDATE, fromDate);
-        editor.putString(KEY_ROCKET_BALANCE_TODATE, toDate);
-        editor.putInt(KEY_ROCKET_BALANCE_STATUS, status);
-        editor.putString(KEY_ROCKET_BALANCE_CONCILIATION_DATE, conciliationDate);
-        editor.putFloat(KEY_ROCKET_BALANCE_PROFIT, Parsers.doubleToFloat(profit));
-        editor.commit();
-    }
-
-    public int getBalanceID()
-    {
-        return pref.getInt(KEY_ROCKET_BALANCE_ID, 0);
-    }
-
-    public float getRocketPtofit()
-    {
-        return pref.getFloat(KEY_ROCKET_BALANCE_PROFIT,0);
-    }
-
-    public float getRocketBalance()
-    {
-        return pref.getFloat(KEY_ROCKET_BALANCE_AMOUNT, 0);
-    }
-
     public void savePaymentsHistoryData(String response)
     {
         editor.putString(KEY_ROCKET_PAYMENTS_RESPONSE, response);
@@ -951,5 +934,38 @@ public class SessionManager
     public String getPaymentsHistoryData()
     {
         return pref.getString(KEY_ROCKET_PAYMENTS_RESPONSE, "");
+    }
+
+    public void saveSaleDetail(int balanceID, int personMasterID, double receivable, double reconcileCount, double sale, String distributor, String name, String minDate, String maxDate)
+    {
+        editor.putInt(KEY_ROCKET_BALANCE_ID, balanceID);
+        editor.putInt(KEY_ROCKET_POS_MASTER_ID, personMasterID);
+        editor.putFloat(KEY_ROCKET_RECIVABLE, Parsers.doubleToFloat(receivable));
+        editor.putFloat(KEY_ROCKET_RECONCILE_COUNT, Parsers.doubleToFloat(reconcileCount));
+        editor.putFloat(KEY_ROCKET_SALE, Parsers.doubleToFloat(sale));
+        editor.putString(KEY_ROCKET_DISTRIBUTOR, distributor);
+        editor.putString(KEY_ROCKET_MIN_DATE, minDate);
+        editor.putString(KEY_ROCKET_MAX_DATE, maxDate);
+        editor.commit();
+    }
+
+    public int getBalanceID()
+    {
+        return pref.getInt(KEY_ROCKET_BALANCE_ID, 0);
+    }
+
+    public float getRocketSale()
+    {
+        return pref.getFloat(KEY_ROCKET_SALE, 0);
+    }
+
+    public float getReceivableAccount()
+    {
+        return pref.getFloat(KEY_ROCKET_RECIVABLE, 0);
+    }
+
+    public float getReconcileAccount()
+    {
+        return pref.getFloat(KEY_ROCKET_RECONCILE_COUNT, 0);
     }
 }

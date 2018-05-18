@@ -10,7 +10,7 @@ public class RocketBalanceList
     private int balanceID;
     @SerializedName("balanceAmount")
     @Expose
-    private int balanceAmount;
+    private double balanceAmount;
     @SerializedName("fromDate")
     @Expose
     private String fromDate;
@@ -25,75 +25,61 @@ public class RocketBalanceList
     private String conciliationDate;
     @SerializedName("profit")
     @Expose
-    private int profit;
+    private double profit;
 
-    public int getBalanceID()
-    {
+    public int getBalanceID() {
         return balanceID;
     }
 
-    public void setBalanceID(int balanceID)
-    {
+    public void setBalanceID(int balanceID) {
         this.balanceID = balanceID;
     }
 
-    public int getBalanceAmount()
-    {
+    public double getBalanceAmount() {
         return balanceAmount;
     }
 
-    public void setBalanceAmount(int balanceAmount)
-    {
+    public void setBalanceAmount(double balanceAmount) {
         this.balanceAmount = balanceAmount;
     }
 
-    public String getFromDate()
-    {
+    public String getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(String fromDate)
-    {
+    public void setFromDate(String fromDate) {
         this.fromDate = fromDate;
     }
 
-    public String getToDate()
-    {
+    public String getToDate() {
         return toDate;
     }
 
-    public void setToDate(String toDate)
-    {
+    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 
-    public int getStatus()
-    {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status)
-    {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public String getConciliationDate()
-    {
+    public String getConciliationDate() {
         return conciliationDate;
     }
 
-    public void setConciliationDate(String conciliationDate)
-    {
+    public void setConciliationDate(String conciliationDate) {
         this.conciliationDate = conciliationDate;
     }
 
-    public int getProfit()
-    {
+    public double getProfit() {
         return profit;
     }
 
-    public void setProfit(int profit)
-    {
+    public void setProfit(double profit) {
         this.profit = profit;
     }
 

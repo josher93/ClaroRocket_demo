@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.yovendosaldo.R;
@@ -35,6 +36,11 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
     TextView tvSaleAmount;
     TextView tvComissionAmount;
     TextView tvTotalPayment;
+    TextView tvNoRecivableAccounts;
+    TextView lblTotalPayment;
+    LinearLayout lnlTotalPayment;
+    View vDvision;
+
     Button btnPayBill;
     AlertDialog mPinDialog;
     ProgressDialog mProgressDialog;
@@ -57,6 +63,10 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
         tvSaleAmount = (TextView) view.findViewById(R.id.tvSaleAmount);
         tvComissionAmount = (TextView) view.findViewById(R.id.tvComissionAmount);
         tvTotalPayment = (TextView) view.findViewById(R.id.tvTotalPayment);
+        tvNoRecivableAccounts = (TextView) view.findViewById(R.id.tvNoRecivableAccounts);
+        lblTotalPayment = (TextView) view.findViewById(R.id.lblTotalPayment);
+        lnlTotalPayment = (LinearLayout) view.findViewById(R.id.lnlTotalPayment);
+        vDvision = view.findViewById(R.id.vDvision);
         btnPayBill = (Button) view.findViewById(R.id.btnPayBill);
         btnPayBill.setOnClickListener(paymentClick);
 
@@ -73,11 +83,11 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
     }
 
     @Override
-    public void presentBalance(String profit, String balance, int balanceID)
+    public void presentBalance(String profit, String receivableAccount, String conciliation, String sold, int balanceID)
     {
-        tvSaleAmount.setText(balance);
+        tvSaleAmount.setText(sold);
         tvComissionAmount.setText(profit);
-        tvTotalPayment.setText(balance);
+        tvTotalPayment.setText(receivableAccount);
         mCurrentBalanceID = balanceID;
     }
 
@@ -270,6 +280,27 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
             Log.e(TAG, "Error: " + ex.getMessage());
         }
     }
+
+    @Override
+    public void displayRecivableGenerated()
+    {
+        try
+        {
+            tvNoRecivableAccounts.setVisibility(View.GONE);
+
+            lblTotalPayment.setVisibility(View.VISIBLE);
+            lnlTotalPayment.setVisibility(View.VISIBLE);
+            tvTotalPayment.setVisibility(View.VISIBLE);
+            btnPayBill.setVisibility(View.VISIBLE);
+            vDvision.setVisibility(View.VISIBLE);
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, "Error: " + ex.getMessage());
+        }
+    }
+
+
 
     View.OnClickListener paymentClick = new View.OnClickListener()
     {

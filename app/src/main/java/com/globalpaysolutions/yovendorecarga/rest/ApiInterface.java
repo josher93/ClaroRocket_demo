@@ -5,6 +5,7 @@ import com.globalpaysolutions.yovendorecarga.model.rest.RocketBalanceResponse;
 import com.globalpaysolutions.yovendorecarga.model.rest.RocketPaymentHistoryResponse;
 import com.globalpaysolutions.yovendorecarga.model.rest.RocketPaymentReq;
 import com.globalpaysolutions.yovendorecarga.model.rest.RocketPaymentResponse;
+import com.globalpaysolutions.yovendorecarga.model.rest.RocketSaleDetailResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -15,9 +16,9 @@ import retrofit2.http.POST;
 
 public interface ApiInterface
 {
-    @Headers("Content-Type: application/json")
+    /*@Headers("Content-Type: application/json")
     @GET(StringsURL.ROCKET_BALANCE)
-    Call<RocketBalanceResponse> getRocketBalance(@Header("Token-Autorization") String token);
+    Call<RocketBalanceResponse> getRocketBalance(@Header("Token-Autorization") String token);*/
 
     @Headers("Content-Type: application/json")
     @GET(StringsURL.ROCKET_PAYMENT)
@@ -27,4 +28,8 @@ public interface ApiInterface
     @POST(StringsURL.ROCKET_BALANCE_PAYMENT)
     Call<RocketPaymentResponse> rocketBalancePayment(@Header("Token-Autorization") String savedToken,
                                                      @Body RocketPaymentReq request);
+
+    @Headers("Content-Type: application/json")
+    @GET(StringsURL.ROCKET_SALE_DETAIL)
+    Call<RocketSaleDetailResponse> getRocketSaleDetail(@Header("Token-Autorization") String token);
 }
