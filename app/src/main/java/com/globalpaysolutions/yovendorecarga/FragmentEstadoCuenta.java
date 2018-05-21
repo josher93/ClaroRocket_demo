@@ -1,24 +1,16 @@
 package com.globalpaysolutions.yovendorecarga;
 
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,15 +25,16 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
 {
     private static final String TAG = FragmentEstadoCuenta.class.getSimpleName();
 
+    AppCompatActivity mActivity;
     TextView tvSaleAmount;
     TextView tvComissionAmount;
     TextView tvTotalPayment;
-    TextView tvNoRecivableAccounts;
     TextView lblTotalPayment;
+    //TextView tvDatesRange;
+    //TextView lblPaymentGenerated;
     LinearLayout lnlTotalPayment;
     View vDvision;
 
-    Button btnPayBill;
     AlertDialog mPinDialog;
     ProgressDialog mProgressDialog;
 
@@ -63,12 +56,11 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
         tvSaleAmount = (TextView) view.findViewById(R.id.tvSaleAmount);
         tvComissionAmount = (TextView) view.findViewById(R.id.tvComissionAmount);
         tvTotalPayment = (TextView) view.findViewById(R.id.tvTotalPayment);
-        tvNoRecivableAccounts = (TextView) view.findViewById(R.id.tvNoRecivableAccounts);
         lblTotalPayment = (TextView) view.findViewById(R.id.lblTotalPayment);
         lnlTotalPayment = (LinearLayout) view.findViewById(R.id.lnlTotalPayment);
+        //tvDatesRange = (TextView) view.findViewById(R.id.tvDatesRange);
+        //lblPaymentGenerated = (TextView) view.findViewById(R.id.lblPaymentGenerated);
         vDvision = view.findViewById(R.id.vDvision);
-        btnPayBill = (Button) view.findViewById(R.id.btnPayBill);
-        btnPayBill.setOnClickListener(paymentClick);
 
         mCurrentBalanceID = 0;
 
@@ -100,103 +92,14 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
     @Override
     public void showConfirmPaymentDialog(String title, String content)
     {
-        try
-        {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
-            alertDialog.setTitle(title);
-            alertDialog.setMessage(content);
-            alertDialog.setCancelable(false);
-            alertDialog.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener()
-            {
-                @Override
-                public void onClick(DialogInterface dialog, int which)
-                {
-                    dialog.dismiss();
-                }
-            });
-            alertDialog.setNeutralButton("PAGAR", new DialogInterface.OnClickListener()
-            {
-                public void onClick(DialogInterface dialog, int which)
-                {
-                    mPresneter.confirmPayment();
-                }
-            });
-            alertDialog.show();
-        }
-        catch (Exception ex)
-        {
-            Log.e(TAG, "Error: " + ex.getMessage());
-        }
+
     }
 
-    @Override
-    public void setPaymentButtonEnabled(boolean enabled)
-    {
-        btnPayBill.setEnabled(enabled);
-    }
 
     @Override
-    public void showPinCodeInputDialgo()
+    public void showPinCodeInputDialgo(int balanceID)
     {
-        try
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            LayoutInflater inflater = this.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.custom_payment_dialog, null);
 
-
-            TextView tvContent = (TextView) dialogView.findViewById(R.id.tvContentPin);
-            final EditText etEnterPin = (EditText) dialogView.findViewById(R.id.etEnterPin);
-            Button btnAccept = (Button) dialogView.findViewById(R.id.btnAccept);
-
-            etEnterPin.addTextChangedListener(new TextWatcher()
-            {
-                int TextLength = 0;
-
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after)
-                {
-                    String str = etEnterPin.getText().toString();
-                    TextLength = str.length();
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count)
-                {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s)
-                {
-                    String PinText = etEnterPin.getText().toString();
-
-                    if (PinText.length() == 4 && TextLength < PinText.length())
-                    {
-                        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                    }
-                }
-            });
-
-            mPinDialog = builder.setView(dialogView).create();
-            mPinDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            mPinDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            mPinDialog.show();
-
-            btnAccept.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
-                {
-                    mPresneter.sendPayment(etEnterPin.getText().toString(), mCurrentBalanceID);
-                }
-            });
-        }
-        catch (Exception ex)
-        {
-            Log.e(TAG, "Error: " + ex.getMessage());
-        }
     }
 
     @Override
@@ -218,7 +121,7 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
     }
 
     @Override
-    public void showGenericDialog(String title, String content)
+    public void showGenericDialog(String title, String content, String button, DialogInterface.OnClickListener clickListener)
     {
         try
         {
@@ -226,13 +129,21 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
             alertDialog.setTitle(title);
             alertDialog.setMessage(content);
             alertDialog.setCancelable(false);
-            alertDialog.setNeutralButton("ACEPTAR", new DialogInterface.OnClickListener()
+            if(clickListener == null)
             {
-                public void onClick(DialogInterface dialog, int which)
+                alertDialog.setNeutralButton(button, new DialogInterface.OnClickListener()
                 {
-                    mPresneter.confirmPayment();
-                }
-            });
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+            }
+            else
+            {
+                alertDialog.setNeutralButton(button, clickListener);
+            }
+
             alertDialog.show();
         }
         catch (Exception ex)
@@ -282,24 +193,29 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
     }
 
     @Override
-    public void displayRecivableGenerated()
+    public void clearListview()
     {
-        try
-        {
-            tvNoRecivableAccounts.setVisibility(View.GONE);
 
-            lblTotalPayment.setVisibility(View.VISIBLE);
-            lnlTotalPayment.setVisibility(View.VISIBLE);
-            tvTotalPayment.setVisibility(View.VISIBLE);
-            btnPayBill.setVisibility(View.VISIBLE);
-            vDvision.setVisibility(View.VISIBLE);
-        }
-        catch (Exception ex)
-        {
-            Log.e(TAG, "Error: " + ex.getMessage());
-        }
     }
 
+    @Override
+    public void noPaymentsPending()
+    {
+        lblTotalPayment.setVisibility(View.GONE);
+        tvTotalPayment.setVisibility(View.GONE);
+
+        lnlTotalPayment.setVisibility(View.GONE);
+        //tvDatesRange.setVisibility(View.GONE);
+        //lblPaymentGenerated.setVisibility(View.GONE);
+
+    }
+
+    @Override
+    public void setDatesRange(String dates)
+    {
+        //if(dates != null)
+            //tvDatesRange.setText(dates);
+    }
 
 
     View.OnClickListener paymentClick = new View.OnClickListener()

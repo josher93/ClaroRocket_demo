@@ -85,21 +85,6 @@
             tools:text="$8.75" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvNoRecivableAccounts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:textSize="16sp"
-        android:visibility="visible"
-        android:text="No se ha generado un cobro aún. "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
         android:id="@+id/lblTotalPayment"
@@ -109,14 +94,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="Total a Cancelar:"
+        android:layout_marginTop="24dp"
+        android:text="Total a cancelar:"
         android:textColor="@color/MainTitleTextColor"
-
-        android:textSize="16sp"
-
-        android:textStyle="bold"
-        android:visibility="gone"
+        android:textSize="14sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblComission" />
@@ -135,7 +117,7 @@
 
         android:orientation="horizontal"
 
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTotalPayment">
@@ -151,40 +133,20 @@
 
             android:textSize="20sp"
             android:textStyle="bold"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:text="$166.25" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnPayBill"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_effect_ripple_rocket_red_rounded"
-        android:gravity="center"
 
-        android:paddingLeft="22dp"
-
-        android:paddingRight="22dp"
-        android:text="Realizar Pago"
-        android:textColor="@color/ActivityWhiteBackground"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/lnlTotalPayment"
-        app:layout_constraintStart_toStartOf="@+id/lnlTotalPayment"
-        app:layout_constraintTop_toBottomOf="@+id/lnlTotalPayment" />
 
     <View
         android:id="@+id/vDvision"
         style="@style/horizontalGrayLine"
         android:layout_marginTop="32dp"
 
-        android:visibility="gone"
+        android:visibility="visible"
 
-        app:layout_constraintTop_toBottomOf="@+id/btnPayBill" />
+        app:layout_constraintTop_toBottomOf="@+id/lnlTotalPayment" />
 
     <TextView
         android:id="@+id/lblDailyPromedy"
@@ -226,7 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Límite de Crédito"
+        android:text="Crédito disponible:"
         android:textColor="@color/color_claro_black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -245,5 +207,37 @@
         app:layout_constraintStart_toStartOf="@+id/tvSalesPromedy"
         app:layout_constraintTop_toTopOf="@+id/lblCreditLimit"
         tools:text="$200.00" />
+
+<!--    <TextView
+        android:id="@+id/lblPaymentGenerated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:textSize="14sp"
+        android:text="Cobro generado al período:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblComission" />
+
+    <TextView
+        android:id="@+id/tvDatesRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/color_claro_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblPaymentGenerated"
+        tools:text="12-MAY-18 - 23-JUN-18" />-->
 
 </android.support.constraint.ConstraintLayout>

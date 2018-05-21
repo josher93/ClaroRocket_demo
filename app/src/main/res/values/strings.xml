@@ -375,5 +375,7 @@
     <string name="title_confirm_payment">¿Realizar pago ahora?</string>
     <string name="label_profit">Comisión</string>
     <string name="label_reconcivable_account">Total Vendido:</string>
+    <string name="label_empty_amount">$ 0.00</string>
+    <string name="label_date_from_date_to">%1$s hasta %2$s</string>
 
 </resources>

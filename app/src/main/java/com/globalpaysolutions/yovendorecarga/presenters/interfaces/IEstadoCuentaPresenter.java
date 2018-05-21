@@ -7,6 +7,6 @@ public interface IEstadoCuentaPresenter
     void retrievePaymentsHistory();
     void presentSavedHistory();
     void payBill();
-    void confirmPayment();
+    void confirmPayment(int balanceID);
     void sendPayment(String pinCode, int paymentID);
 }

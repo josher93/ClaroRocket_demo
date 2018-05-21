@@ -968,4 +968,14 @@ public class SessionManager
     {
         return pref.getFloat(KEY_ROCKET_RECONCILE_COUNT, 0);
     }
+
+    public String getMinDate()
+    {
+        return pref.getString(KEY_ROCKET_MIN_DATE, "");
+    }
+
+    public String getMaxDate()
+    {
+        return pref.getString(KEY_ROCKET_MAX_DATE, "");
+    }
 }

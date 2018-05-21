@@ -1,5 +1,7 @@
 package com.globalpaysolutions.yovendorecarga.views;
 
+import android.content.DialogInterface;
+
 import com.globalpaysolutions.yovendorecarga.model.rest.RocketBalanceList;
 
 import java.util.List;
@@ -9,11 +11,12 @@ public interface EstadoCuentaView
     void presentBalance(String profit, String receivableAccount, String conciliation, String sold, int balanceID);
     void renderPaymentsHistory(List<RocketBalanceList> rocketBalanceList);
     void showConfirmPaymentDialog(String title, String content);
-    void setPaymentButtonEnabled(boolean enabled);
-    void showPinCodeInputDialgo();
+    void showPinCodeInputDialgo(int balanceID);
     void dismissPinCodeInputDialog();
-    void showGenericDialog(String title, String content);
+    void showGenericDialog(String title, String content, String button, DialogInterface.OnClickListener clickListener);
     void showLoadingDialg(String label);
     void hideLoadingDialog();
-    void displayRecivableGenerated();
+    void clearListview();
+    void noPaymentsPending();
+    void setDatesRange(String dates);
 }

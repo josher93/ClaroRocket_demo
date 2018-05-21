@@ -1,6 +1,8 @@
 package com.globalpaysolutions.yovendorecarga.presenters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 
 import com.android.yovendosaldo.R;
@@ -17,7 +19,10 @@ import com.globalpaysolutions.yovendorecarga.presenters.interfaces.IEstadoCuenta
 import com.globalpaysolutions.yovendorecarga.views.EstadoCuentaView;
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import retrofit2.Response;
 
@@ -51,8 +56,6 @@ public class EstadoCuentaPresenterImpl implements IEstadoCuentaPresenter, HomeLi
     {
         try
         {
-            mView.setPaymentButtonEnabled(false);
-
             float reconcilableAccount = mSessionManager.getReconcileAccount();
             float sales = mSessionManager.getRocketSale();
             float receivableAccount = mSessionManager.getReceivableAccount();
@@ -65,6 +68,20 @@ public class EstadoCuentaPresenterImpl implements IEstadoCuentaPresenter, HomeLi
             String recivableAccount = "$ ".concat(mFormatter.format(receivableAccount));
 
             mView.presentBalance(profitDisplay, recivableAccount, conciliation, sold, mSessionManager.getBalanceID());
+
+            if(receivableAccount <= 0)
+            {
+                mView.noPaymentsPending();
+            }
+            /*else
+            {
+                String dateFrom = dateFormatter(mSessionManager.getMinDate());
+                String dateTo = dateFormatter(mSessionManager.getMaxDate());
+
+                String dates = String.format(mContext.getString(R.string.label_date_from_date_to), dateFrom, dateTo);
+
+                mView.setDatesRange(dates);
+            }*/
 
         }
         catch (Exception ex)
@@ -113,11 +130,11 @@ public class EstadoCuentaPresenterImpl implements IEstadoCuentaPresenter, HomeLi
     }
 
     @Override
-    public void confirmPayment()
+    public void confirmPayment(int balanceID)
     {
         try
         {
-            mView.showPinCodeInputDialgo();
+            mView.showPinCodeInputDialgo(balanceID);
         }
         catch (Exception ex)
         {
@@ -153,12 +170,25 @@ public class EstadoCuentaPresenterImpl implements IEstadoCuentaPresenter, HomeLi
             String sold = "$ ".concat(mFormatter.format(sales));
             String recivableAccount = "$ ".concat(mFormatter.format(receivableAccount));
 
-            if(receivableAccount > 0)
+            mView.presentBalance(profitDisplay, recivableAccount, conciliation, sold, mSessionManager.getBalanceID());
+
+            if(receivableAccount <= 0)
             {
-                mView.setPaymentButtonEnabled(true);
-                mView.presentBalance(profitDisplay, recivableAccount, conciliation, sold, mSessionManager.getBalanceID());
-                mView.displayRecivableGenerated();
+                mView.noPaymentsPending();
             }
+            else
+            {
+
+            }
+            /*else
+            {
+                String dateFrom = dateFormatter(response.getMinDate());
+                String dateTo = dateFormatter(response.getMaxDate());
+
+                String dates = String.format(mContext.getString(R.string.label_date_from_date_to), dateFrom, dateTo);
+
+                mView.setDatesRange(dates);
+            }*/
         }
         catch (Exception ex)
         {
@@ -205,9 +235,20 @@ public class EstadoCuentaPresenterImpl implements IEstadoCuentaPresenter, HomeLi
         mHomeInteractor.retrieveBalance(this);
 
         if(response.body().isStatus())
-            mView.showGenericDialog("Éxito", "El pago se realizó correctamente");
+        {
+            mView.clearListview();
+            mView.showGenericDialog("Éxito", "El pago se realizó correctamente", "ACEPTAR", new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+                    dialogInterface.dismiss();
+                    mInteractor.retrievePaymentsHistory(EstadoCuentaPresenterImpl.this);
+                }
+            });
+        }
         else
-            mView.showGenericDialog("Algo salió mal", "Por favor inténtelo nuevamente o más tarde.");
+            mView.showGenericDialog("Algo salió mal", "Por favor inténtelo nuevamente o más tarde.", "ACEPTAR", null);
     }
 
     @Override
@@ -217,16 +258,33 @@ public class EstadoCuentaPresenterImpl implements IEstadoCuentaPresenter, HomeLi
         {
             mView.hideLoadingDialog();
 
-            //Gson gson = new Gson();
-            //GenericResponse response = gson.fromJson(errorResponse, GenericResponse.class);
             if(errorResponse != null)
                 Log.i(TAG, errorResponse);
 
-            mView.showGenericDialog("Algo salió mal", "Por favor inténtelo nuevamente o más tarde.");
+            mView.showGenericDialog("Algo salió mal", "Por favor inténtelo nuevamente o más tarde.", "ACEPTAR", null);
         }
         catch (Exception ex)
         {
             Log.e(TAG, "Error: " + ex.getMessage());
         }
+    }
+
+    private String dateFormatter(String stringDate)
+    {
+        String date = "";
+        try
+        {
+            DateFormat originalformat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            SimpleDateFormat newFormat = new SimpleDateFormat("d'-'MMM'-'yy", new Locale("es", "ES"));
+
+            String reformattedStr = newFormat.format(originalformat.parse(stringDate));
+            date = reformattedStr.toUpperCase();
+        }
+        catch (Exception ex)
+        {
+            Log.e(TAG, "Error: " + ex.getMessage());
+        }
+
+        return date;
     }
 }
