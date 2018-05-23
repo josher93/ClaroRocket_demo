@@ -9,7 +9,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context="com.globalpaysolutions.yovendorecarga.Login">
+    tools:context="com.globalpaysolutions.clarorocket.Login">
 
     <ScrollView
         android:layout_width="fill_parent"

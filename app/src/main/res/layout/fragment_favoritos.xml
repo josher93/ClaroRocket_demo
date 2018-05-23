@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
-    tools:context="com.globalpaysolutions.yovendorecarga.FragmentFavoritos">
+    tools:context="com.globalpaysolutions.clarorocket.FragmentFavoritos">
 
     <FrameLayout
         android:id="@+id/toolbarFavs"

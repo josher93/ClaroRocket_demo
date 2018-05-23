@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.android.yovendosaldo">
+    package="com.globalpaysolutions.clarorocket">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -64,11 +64,11 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
     <permission
-        android:name="com.globalpaysolutions.yovendorecarga.permission.C2D_MESSAGE"
+        android:name="com.globalpaysolutions.clarorocket.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <application
-        android:name="com.globalpaysolutions.yovendorecarga.core.YoVendoRecargaApplication"
+        android:name="com.globalpaysolutions.clarorocket.core.YoVendoRecargaApplication"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -77,7 +77,7 @@
 
         <!-- Activities -->
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.Home"
+            android:name="com.globalpaysolutions.clarorocket.Home"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
@@ -88,60 +88,50 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.Login"
+            android:name="com.globalpaysolutions.clarorocket.Login"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.Configuracion"
+            android:name="com.globalpaysolutions.clarorocket.Configuracion"
             android:label="@string/title_activity_config"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.Perfil"
+            android:name="com.globalpaysolutions.clarorocket.Perfil"
             android:label="@string/title_activity_profile"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
+
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.InfoGeneral"
+            android:name="com.globalpaysolutions.clarorocket.ManejoPIN"
             android:label="@string/title_activity_infor"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Configuracion"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.Configuracion"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.ManejoPIN"
-            android:label="@string/title_activity_infor"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Configuracion"
-            android:screenOrientation="portrait"
+            android:name="com.globalpaysolutions.clarorocket.PIN"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.ManejoPIN"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.PIN"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.ManejoPIN"
-            android:theme="@style/AppTheme"></activity>
-        <activity
-            android:name="com.globalpaysolutions.yovendorecarga.Notificaciones"
+            android:name="com.globalpaysolutions.clarorocket.Notificaciones"
             android:label="@string/title_activity_notificaciones"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.HistorialVentas"
+            android:name="com.globalpaysolutions.clarorocket.HistorialVentas"
             android:label="@string/title_activity_sales_history"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
+
         <activity
-            android:name="com.globalpaysolutions.yovendorecarga.DepositoBancario"
-            android:label="@string/title_activity_deposito_bancario"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
-        <activity
-            android:name="com.globalpaysolutions.yovendorecarga.DetalleNotificacion"
+            android:name="com.globalpaysolutions.clarorocket.DetalleNotificacion"
             android:launchMode="singleTop"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Notificaciones"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.Notificaciones"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <!--
@@ -190,17 +180,10 @@
             android:name="com.onesignal.NotificationOpened.DEFAULT"
             android:value="DISABLE" />
 
-        <service
-            android:name="com.globalpaysolutions.yovendorecarga.customs.onesignal.NotificationExtender"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE">
-            <intent-filter>
-                <action android:name="com.onesignal.NotificationExtender" />
-            </intent-filter>
-        </service>
 
-        <activity android:name="com.globalpaysolutions.yovendorecarga.EstadoCuenta"
-            android:parentActivityName="com.globalpaysolutions.yovendorecarga.Home"
+
+        <activity android:name="com.globalpaysolutions.clarorocket.EstadoCuenta"
+            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>

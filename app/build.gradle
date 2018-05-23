@@ -18,7 +18,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.globalpaysolutions.yovendorecarga"
+        applicationId "com.globalpaysolutions.clarorocket"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 73
@@ -66,13 +66,13 @@ dependencies {
     //Google Cloud Messaging
     implementation 'com.google.android.gms:play-services-gcm:10.2.0'
     //Location
-    implementation 'com.google.android.gms:play-services:10.2.0'
+    //implementation 'com.google.android.gms:play-services:10.2.0'
     implementation 'com.android.support:multidex:1.0.1'
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.google.code.gson:gson:2.6.2'
     //GeoFire
-    implementation 'com.firebase:geofire-android:2.1.1'
+    //implementation 'com.firebase:geofire-android:2.1.1'
 
     //Facebook SDK
     implementation('com.facebook.android:facebook-android-sdk:[4,5)')
@@ -92,4 +92,4 @@ dependencies {
     implementation 'me.relex:circleindicator:1.2.2@aar'
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
