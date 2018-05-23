@@ -63,30 +63,7 @@ public class HomeInteractor implements IHomeInteractor
             });
 
 
-            /*ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<RocketBalanceResponse> call = apiService.getRocketBalance(mSessionManager.getSavedToken());
 
-            call.enqueue(new Callback<RocketBalanceResponse>()
-            {
-                @Override
-                public void onResponse(Call<RocketBalanceResponse> call, Response<RocketBalanceResponse> response)
-                {
-                    if(response.isSuccessful())
-                    {
-                        listener.onRocketBalanceSuccess(response.body());
-                    }
-                    else
-                    {
-                        listener.onRocketBalanceError(response.code(), null, null);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<RocketBalanceResponse> call, Throwable t)
-                {
-                    listener.onRocketBalanceError(0, null, t);
-                }
-            });*/
         }
         catch (Exception ex)
         {

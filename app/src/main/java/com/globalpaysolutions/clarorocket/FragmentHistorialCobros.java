@@ -75,17 +75,6 @@ public class FragmentHistorialCobros extends Fragment implements EstadoCuentaVie
         return view;
     }
 
-    public void onResume() {
-        super.onResume();
-        mPresenter.presentSavedBalance();
-    }
-
-    @Override
-    public void onAttach(Context context)
-    {
-        super.onAttach(context);
-        mContext = context;
-    }
 
     private boolean checkConnection()
     {

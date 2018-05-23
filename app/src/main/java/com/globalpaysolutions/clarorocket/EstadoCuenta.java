@@ -66,6 +66,7 @@ public class EstadoCuenta extends AppCompatActivity implements ViewPager.OnPageC
         mAdapter.addFragment(new FragmentEstadoCuenta(), "Estado de Cuenta");
         mAdapter.addFragment(new FragmentHistorialCobros(), "Historial de Pagos");
         viewPager.setAdapter(mAdapter);
+        viewPager.addOnPageChangeListener(this);
     }
 
     @Override

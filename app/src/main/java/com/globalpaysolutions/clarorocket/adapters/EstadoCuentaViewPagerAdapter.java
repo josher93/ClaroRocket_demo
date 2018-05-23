@@ -60,8 +60,7 @@ public class EstadoCuentaViewPagerAdapter extends FragmentStatePagerAdapter
 
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position)
-    {
+    public Object instantiateItem(ViewGroup container, int position) {
         Object object = super.instantiateItem(container, position);
         if (object instanceof Fragment) {
             Fragment fragment = (Fragment) object;

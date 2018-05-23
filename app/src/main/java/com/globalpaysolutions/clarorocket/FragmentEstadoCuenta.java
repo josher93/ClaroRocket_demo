@@ -63,8 +63,6 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
         tvTotalPayment = (TextView) view.findViewById(R.id.tvTotalPayment);
         lblTotalPayment = (TextView) view.findViewById(R.id.lblTotalPayment);
         lnlTotalPayment = (LinearLayout) view.findViewById(R.id.lnlTotalPayment);
-        //tvDatesRange = (TextView) view.findViewById(R.id.tvDatesRange);
-        //lblPaymentGenerated = (TextView) view.findViewById(R.id.lblPaymentGenerated);
         vDvision = view.findViewById(R.id.vDvision);
 
         mCurrentBalanceID = 0;
@@ -74,22 +72,18 @@ public class FragmentEstadoCuenta extends Fragment implements EstadoCuentaView
         mPresneter.presentSavedBalance();
         mPresneter.retrieveBalance();
 
-
-
         return view;
     }
 
-    public void onResume() {
-        super.onResume();
-        mPresneter.presentSavedBalance();
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
     }
 
-    @Override
-    public void onAttach(Context context)
-    {
-        super.onAttach(context);
-        mContext = context;
-    }
 
     @Override
     public void presentBalance(String profit, String receivableAccount, String conciliation, String sold, int balanceID)
