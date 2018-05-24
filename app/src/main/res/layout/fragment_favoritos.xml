@@ -27,7 +27,7 @@
                 android:layout_marginStart="8dp"
                 android:background="?attr/selectableItemBackground"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_add_favorite"
+                android:src="@drawable/ic_add_circle"
                 app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
                 app:layout_constraintStart_toEndOf="@+id/tvTitle"
                 app:layout_constraintTop_toTopOf="@+id/tvTitle"/>

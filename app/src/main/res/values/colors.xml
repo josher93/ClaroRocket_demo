@@ -31,6 +31,7 @@
     <color name="color_tab">@drawable/tab_text_color</color>
     <color name="indicator">#FBD30A</color>
     <color name="SemiTransparentGreen">#7b93d344</color>
+
     <color name="Transparent">#00ffffff</color>
 
     <color name="material_gray_900">#212121</color>
@@ -72,6 +73,7 @@
     <color name="color_claro_red">#e72a2e</color>
     <color name="color_claro_red_dark">#b42225</color>
     <color name="color_claro_red_pressed">#e25255</color>
+    <color name="color_semitransparent_red_claro">#7be72a2e</color>
     <color name="color_claro_black">#434343</color>
     <color name="color_claro_gray">#707070</color>
 

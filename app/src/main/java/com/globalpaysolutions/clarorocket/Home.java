@@ -415,6 +415,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                 {
                     String amountName = mAmountNames.get(i);
                     mSelectedAmunt = mAmountsMap.get(amountName);
+                    PackageCode = mSelectedAmunt.getPackageCode();
                     SelectedAmuntItemDisplay = mSelectedAmunt.getDisplay();
                 }
             });
@@ -1204,6 +1205,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     {
         super.onResume();
 
+        mPresenter.retrieveRocketBalance();
 
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "YVR Lock");
@@ -1274,6 +1276,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         {
             txtPhoneNumber.setText("");
             lblSelectedAmount.setText(R.string.label_select);
+            PackageCode = 0;
             mSelectedAmunt = null;
         }
         catch (Exception ex)
@@ -1309,7 +1312,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
         JSONObject validation = new JSONObject();
         try
         {
-            validation.put("appVersionName", BuildConfig.VERSION_NAME);
+            validation.put("appVersionName", Data.VERSION_NAME);
             validation.put("platformName", Data.PLATFORM);
         }
         catch (JSONException ex)

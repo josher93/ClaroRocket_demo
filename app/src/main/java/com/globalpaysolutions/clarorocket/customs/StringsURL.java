@@ -95,11 +95,11 @@ public final class StringsURL
 
     public final static String MARK_NOTIFICATION_READ = URL_BASE + "setNotificationRead/";
 
-    public static final String FAVORITES_LIST = URL_BASE + "FavoriteNumber/Get";
+    public static final String FAVORITES_LIST = YVR_API + "FavoriteNumber/Get";
 
-    public static final String FAVORITES_CREATE = URL_BASE + "FavoriteNumber/Create";
+    public static final String FAVORITES_CREATE = YVR_API + "FavoriteNumber/Create";
 
-    public static final String FAVORITES_DELETE = URL_BASE + "FavoriteNumber/Delete";
+    public static final String FAVORITES_DELETE = YVR_API + "FavoriteNumber/Delete";
 
     public static final String ROCKET_BALANCE = "GetBalanceRocket";
 

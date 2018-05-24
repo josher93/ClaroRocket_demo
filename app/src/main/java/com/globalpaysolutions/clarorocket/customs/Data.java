@@ -39,6 +39,7 @@ import java.util.Map;
 public class Data
 {
     public static final String PLATFORM  = "ANDROID";
+    public static final String VERSION_NAME = "1.85";
     public static List<PaymentItem> PaymentItems = new ArrayList<>();
     public static List<Amount> Amounts = new ArrayList<>();
     public static List<Amount> resultAmountList = new ArrayList<>();

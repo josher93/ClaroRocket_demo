@@ -95,7 +95,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="Total a cancelar:"
+        android:text="Total a cancelar (pagos pendientes):"
         android:textColor="@color/MainTitleTextColor"
         android:textSize="14sp"
         android:visibility="visible"

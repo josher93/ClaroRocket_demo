@@ -1033,7 +1033,7 @@ public class Login extends AppCompatActivity
         JSONObject validation = new JSONObject();
         try
         {
-            validation.put("appVersionName", BuildConfig.VERSION_NAME);
+            validation.put("appVersionName", Data.VERSION_NAME);
             validation.put("platformName", Data.PLATFORM);
         }
         catch (JSONException ex)
