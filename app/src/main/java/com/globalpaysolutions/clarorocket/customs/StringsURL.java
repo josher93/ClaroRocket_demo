@@ -65,7 +65,9 @@ public final class StringsURL
 
     public final static String USERBAG = URL_BASE + "userbag";
 
-    public final static String PRODUCTS = URL_BASE + "products/";
+    //public final static String PRODUCTS = URL_BASE + "products/";
+
+    public final static String PRODUCTS = YVR_API + "products/";
 
     public final static String DEVICEREGISTRATION = URL_BASE + "deviceregistration/";
 
