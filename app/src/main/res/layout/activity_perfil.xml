@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg_home"
-    tools:context="com.globalpaysolutions.clarorocket.Perfil">
+    tools:context="com.globalpaysolutions.mrocket.Perfil">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:id="@+id/toolbarProf"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/color_claro_red"
+            android:background="@color/color_movistar_green"
             android:elevation="4dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat"
             app:theme="@style/ToolbarTheme"/>

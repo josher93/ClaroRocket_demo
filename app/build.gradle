@@ -18,7 +18,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.globalpaysolutions.clarorocket"
+        applicationId "com.globalpaysolutions.mrocket"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 5

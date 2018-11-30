@@ -69,12 +69,19 @@
 
 
     <!-- COLORES DE CLARO ROCKET     -->
-
     <color name="color_claro_red">#e72a2e</color>
     <color name="color_claro_red_dark">#b42225</color>
     <color name="color_claro_red_pressed">#e25255</color>
     <color name="color_semitransparent_red_claro">#7be72a2e</color>
     <color name="color_claro_black">#434343</color>
     <color name="color_claro_gray">#707070</color>
+
+    <!-- COLORES DE MOVISTAR ROCKET     -->
+    <color name="color_movistar_green">#5bc502</color>
+    <color name="color_movistar_green_dark">#469900</color>
+    <color name="color_movistar_green_pressed">#94cc63</color>
+    <color name="color_movistar_green_semitransparent">#7b5bc502</color>
+    <!--<color name="color_claro_black">#434343</color>
+    <color name="color_claro_gray">#707070</color>-->
 
 </resources>

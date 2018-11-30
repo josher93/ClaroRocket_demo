@@ -2,15 +2,15 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/color_claro_red</item>
-        <item name="android:colorPrimaryDark">@color/color_claro_red_dark</item>
-        <item name="android:statusBarColor">@color/color_claro_red</item>
+        <item name="android:colorPrimary">@color/color_movistar_green</item>
+        <item name="android:colorPrimaryDark">@color/color_movistar_green_dark</item>
+        <item name="android:statusBarColor">@color/color_movistar_green</item>
         <!-- Customize your theme here. -->
-        <item name="colorAccent">@color/color_claro_red</item>
+        <item name="colorAccent">@color/color_movistar_green</item>
         <item name="android:windowBackground">@color/ActivityWhiteBackground</item>
 
         <!--Setea el color del item seleccinado en el Drawer-->
-        <item name="colorControlHighlight">@color/color_claro_red</item>
+        <item name="colorControlHighlight">@color/color_movistar_green</item>
         <item name="android:activatedBackgroundIndicator">@drawable/custom_gridview_selector</item>
 
         <!-- You can also set colorControlNormal, colorControlActivated
@@ -30,7 +30,7 @@
     <style name="ToolbarTheme" parent="AppTheme">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>
-        <item name="android:textColor">@color/color_claro_red</item>
+        <item name="android:textColor">@color/color_movistar_green</item>
 
     </style>
 

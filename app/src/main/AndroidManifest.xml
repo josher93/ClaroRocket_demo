@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.globalpaysolutions.clarorocket">
+    package="com.globalpaysolutions.mrocket">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -64,11 +64,11 @@
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
     <permission
-        android:name="com.globalpaysolutions.clarorocket.permission.C2D_MESSAGE"
+        android:name="com.globalpaysolutions.mrocket.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <application
-        android:name="com.globalpaysolutions.clarorocket.core.YoVendoRecargaApplication"
+        android:name="com.globalpaysolutions.mrocket.core.YoVendoRecargaApplication"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -77,7 +77,7 @@
 
         <!-- Activities -->
         <activity
-            android:name="com.globalpaysolutions.clarorocket.Home"
+            android:name="com.globalpaysolutions.mrocket.Home"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
@@ -88,50 +88,50 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.globalpaysolutions.clarorocket.Login"
+            android:name="com.globalpaysolutions.mrocket.Login"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.clarorocket.Configuracion"
+            android:name="com.globalpaysolutions.mrocket.Configuracion"
             android:label="@string/title_activity_config"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
+            android:parentActivityName="com.globalpaysolutions.mrocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.clarorocket.Perfil"
+            android:name="com.globalpaysolutions.mrocket.Perfil"
             android:label="@string/title_activity_profile"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
+            android:parentActivityName="com.globalpaysolutions.mrocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
 
         <activity
-            android:name="com.globalpaysolutions.clarorocket.ManejoPIN"
+            android:name="com.globalpaysolutions.mrocket.ManejoPIN"
             android:label="@string/title_activity_infor"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.Configuracion"
+            android:parentActivityName="com.globalpaysolutions.mrocket.Configuracion"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.clarorocket.PIN"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.ManejoPIN"
+            android:name="com.globalpaysolutions.mrocket.PIN"
+            android:parentActivityName="com.globalpaysolutions.mrocket.ManejoPIN"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.clarorocket.Notificaciones"
+            android:name="com.globalpaysolutions.mrocket.Notificaciones"
             android:label="@string/title_activity_notificaciones"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
+            android:parentActivityName="com.globalpaysolutions.mrocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name="com.globalpaysolutions.clarorocket.HistorialVentas"
+            android:name="com.globalpaysolutions.mrocket.HistorialVentas"
             android:label="@string/title_activity_sales_history"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
+            android:parentActivityName="com.globalpaysolutions.mrocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
 
         <activity
-            android:name="com.globalpaysolutions.clarorocket.DetalleNotificacion"
+            android:name="com.globalpaysolutions.mrocket.DetalleNotificacion"
             android:launchMode="singleTop"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.Notificaciones"
+            android:parentActivityName="com.globalpaysolutions.mrocket.Notificaciones"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
         <!--
@@ -182,8 +182,8 @@
 
 
 
-        <activity android:name="com.globalpaysolutions.clarorocket.EstadoCuenta"
-            android:parentActivityName="com.globalpaysolutions.clarorocket.Home"
+        <activity android:name="com.globalpaysolutions.mrocket.EstadoCuenta"
+            android:parentActivityName="com.globalpaysolutions.mrocket.Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>

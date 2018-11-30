@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.globalpaysolutions.clarorocket.Configuracion">
+    tools:context="com.globalpaysolutions.mrocket.Configuracion">
 
     <!--TOOLBAR-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarConf"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_claro_red"
+        android:background="@color/color_movistar_green"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat"
         app:theme="@style/ToolbarTheme" />
