@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.globalpaysolutions.mrocket.ManejoPIN">
+    tools:context="com.globalpaysolutions.tigorocket.ManejoPIN">
 
     <!--TOOLBAR-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarManejoPIN"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_movistar_green"
+        android:background="@color/color_tigo_blue"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat"
         app:theme="@style/ToolbarTheme" />

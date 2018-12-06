@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_home"
-    tools:context="com.globalpaysolutions.mrocket.Referido">
+    tools:context="com.globalpaysolutions.tigorocket.Referido">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/referToolbar"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/SuperUltraLightGray"
-    tools:context="com.globalpaysolutions.mrocket.FragmentEstadoCuenta">
+    tools:context="com.globalpaysolutions.tigorocket.FragmentEstadoCuenta">
 
     <TextView
         android:id="@+id/lblSaleAmount"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/color_movistar_green"
+            android:textColor="@color/color_tigo_blue"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:text="$175.00" />
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/color_movistar_green"
+            android:textColor="@color/color_tigo_blue"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:text="$8.75" />

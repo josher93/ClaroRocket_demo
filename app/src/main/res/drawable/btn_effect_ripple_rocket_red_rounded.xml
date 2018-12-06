@@ -10,13 +10,13 @@
     <item android:state_pressed="true">
         <shape>
             <corners android:radius="6dp"/>
-            <solid android:color="@color/color_movistar_green_pressed" />
+            <solid android:color="@color/color_tigo_blue_pressed" />
         </shape>
     </item>
     <item>
         <shape>
             <corners android:radius="6dp"/>
-            <solid android:color="@color/color_movistar_green" />
+            <solid android:color="@color/color_tigo_blue" />
         </shape>
     </item>
 </selector>

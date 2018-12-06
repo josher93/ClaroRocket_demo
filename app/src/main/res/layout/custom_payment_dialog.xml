@@ -10,7 +10,7 @@
         android:id="@+id/toolbarPin"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_movistar_green"
+        android:background="@color/color_tigo_blue"
         android:elevation="4dp"
         android:gravity="center"
         app:popupTheme="@style/ThemeOverlay.AppCompat"

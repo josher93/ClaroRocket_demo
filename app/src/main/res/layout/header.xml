@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_movistar_green"
+    android:background="@color/color_tigo_blue"
     android:orientation="vertical"
     android:paddingBottom="8dp"
     android:paddingTop="32dp">

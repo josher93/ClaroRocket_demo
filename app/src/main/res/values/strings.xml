@@ -130,7 +130,7 @@
     <string name="politics"><u>Políticas de Privacidad</u></string>
     <string name="not_setted">Sin establecer...</string>
     <string name="dialog_logging_in">Iniciando sesión...</string>
-    <string name="phone_number_edittext_hint">Número de Movistar</string>
+    <string name="phone_number_edittext_hint">Número de Tigo</string>
     <!-- <string name="phone_number_edittext_hint">NÚMERO CELULAR</string>-->
     <!--<string name="phone_number_edittext_hint">NÚMERO CELULAR</string>-->
     <string name="allow_permission_phone_state_dialog">Debe permitir el acceso al estado del teléfono para asociar el dispositivo a su cuenta.</string>
@@ -285,8 +285,8 @@
     <string name="no_userbags_title">BOLSONES ACTIVOS</string>
     <string name="no_userbags_message">No tienes bolsones asignados, contacta a soporte técnico.</string>
 
-    <string name="refer_title_text">Gana saldo para llamadas a Movistar ¡GRATIS!</string>
-    <string name="refer_content_text">Obtén saldo para llamadas a Movistar gratis invitando a un amigo a YoVendoRECARGA. Sólo escribe su dirección de correo electrónico.</string>
+    <string name="refer_title_text">Gana saldo para llamadas a Tigo ¡GRATIS!</string>
+    <string name="refer_content_text">Obtén saldo para llamadas a Tigo gratis invitando a un amigo a YoVendoRECARGA. Sólo escribe su dirección de correo electrónico.</string>
 
     <!--    REFERIDOS   -->
     <string name="label_reffer_title">¡Refiere a un amigo y gana!</string>

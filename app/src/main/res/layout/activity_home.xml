@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.globalpaysolutions.mrocket.Home">
+    tools:context="com.globalpaysolutions.tigorocket.Home">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/color_movistar_green"
+            android:background="@color/color_tigo_blue"
             android:elevation="4dp"
             android:gravity="center"
             app:popupTheme="@style/ThemeOverlay.AppCompat"
@@ -175,7 +175,7 @@
                                             android:layout_height="match_parent"
                                             android:gravity="center"
                                             android:inputType="none"
-                                            android:textColor="@color/color_movistar_green"
+                                            android:textColor="@color/color_tigo_blue"
                                             android:textSize="17dp"
                                             android:textStyle="bold"
                                             tools:text="$ 20000.00" />
@@ -200,7 +200,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:gravity="center"
-                                            android:textColor="@color/color_movistar_green"
+                                            android:textColor="@color/color_tigo_blue"
                                             android:textSize="17dp"
                                             android:textStyle="bold" />
 

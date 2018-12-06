@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
       xmlns:app="http://schemas.android.com/apk/res-auto"
-      tools:context="com.globalpaysolutions.mrocket.Promociones">
+      tools:context="com.globalpaysolutions.tigorocket.Promociones">
     <item
         android:id="@+id/action_refresh_promo"
         app:showAsAction="always"

@@ -21,7 +21,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat"
             app:theme="@style/ToolbarTheme"/>-->
 
-        <com.globalpaysolutions.mrocket.customs.SlidingTabLayout
+        <com.globalpaysolutions.tigorocket.customs.SlidingTabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

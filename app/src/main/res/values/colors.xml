@@ -81,7 +81,12 @@
     <color name="color_movistar_green_dark">#469900</color>
     <color name="color_movistar_green_pressed">#94cc63</color>
     <color name="color_movistar_green_semitransparent">#7b5bc502</color>
-    <!--<color name="color_claro_black">#434343</color>
-    <color name="color_claro_gray">#707070</color>-->
+
+
+    <!-- COLORES DE TIGO ROCKET     -->
+    <color name="color_tigo_blue">#01367c</color>
+    <color name="color_tigo_blue_dark">#002659</color>
+    <color name="color_tigo_blue_pressed">#4e89d7</color>
+    <color name="color_tigo_blue_semitransparent">#7b01367c</color>
 
 </resources>

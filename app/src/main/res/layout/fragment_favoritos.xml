@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
     android:orientation="vertical"
-    tools:context="com.globalpaysolutions.mrocket.FragmentFavoritos">
+    tools:context="com.globalpaysolutions.tigorocket.FragmentFavoritos">
 
     <FrameLayout
         android:id="@+id/toolbarFavs"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/color_movistar_green"
+        android:background="@color/color_tigo_blue"
         android:elevation="4dp">
 
         <android.support.constraint.ConstraintLayout

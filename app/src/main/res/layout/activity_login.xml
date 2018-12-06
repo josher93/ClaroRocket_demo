@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_movistar_green"
+    android:background="@color/color_tigo_blue"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context="com.globalpaysolutions.mrocket.Login">
+    tools:context="com.globalpaysolutions.tigorocket.Login">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -185,7 +185,7 @@
                 android:background="@drawable/btn_effect_ripple_white_rounded_corners"
                 android:clickable="true"
                 android:onClick="Login"
-                android:textColor="@color/color_movistar_green"
+                android:textColor="@color/color_tigo_blue"
                 android:paddingLeft="@dimen/ActivityHorizontalExtraCustomMargin"
                 android:paddingRight="@dimen/ActivityHorizontalExtraCustomMargin"
                 android:text="INICIAR SESIÓN"/>
