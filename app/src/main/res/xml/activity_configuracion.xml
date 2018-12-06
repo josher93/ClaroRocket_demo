@@ -9,8 +9,8 @@
             android:title="@string/preference_pin_title">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:targetClass="com.globalpaysolutions.mrocket.ManejoPIN"
-                android:targetPackage="com.globalpaysolutions.mrocket"/>
+                android:targetClass="com.globalpaysolutions.tigorocket.ManejoPIN"
+                android:targetPackage="com.globalpaysolutions.tigorocket"/>
             <!--<intent
                 android:action="android.intent.action.VIEW"
                 android:targetClass="com.globalpaysolutions.yovendorecarga.Configuracion"

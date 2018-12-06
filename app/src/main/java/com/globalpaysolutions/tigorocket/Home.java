@@ -354,6 +354,8 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     {
         try
         {
+            mAmountList.clear();
+
             JSONObject savedData = sessionManager.getSavedAmounts();
             JSONArray savedAmounts = savedData.getJSONArray("denomination");
 
@@ -903,8 +905,18 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
                     sessionManager.saveAmounts(response);
 
                     if(Data.Amounts.size() > 0)
-                        mAmountList.addAll(Data.Amounts);
-
+                    {
+                        if(mAmountList.size() == 0)
+                        {
+                            for(Amount item : Data.Amounts)
+                            {
+                                if(TextUtils.equals(item.getMNO(), Data.MNO_NAME))
+                                {
+                                    mAmountList.add(item);
+                                }
+                            }
+                        }
+                    }
                 }
                 else
                 {

@@ -145,7 +145,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
-                        android:background="@color/color_claro_red_pressed"/>
+                        android:background="@color/color_tigo_blue_pressed"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"

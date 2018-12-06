@@ -1,35 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="170dp"
     android:background="@color/color_tigo_blue"
     android:orientation="vertical"
     android:paddingBottom="8dp"
-    android:paddingTop="32dp">
+    android:weightSum="100">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15" />
 
-    <ImageView
-        android:layout_width="193dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logo_vertical" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="50"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_vertical" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10" />
 
     <TextView
         android:id="@+id/tvVendorName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_weight="12"
         android:textColor="@color/ActivityWhiteBackground"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:text="Anastacio Lopez" />
 
     <TextView
         android:id="@+id/tvVendorCode"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_weight="13"
         android:text="@string/label_vendor_code"
         android:textColor="@color/ActivityWhiteBackground"
         android:textSize="14sp" />
