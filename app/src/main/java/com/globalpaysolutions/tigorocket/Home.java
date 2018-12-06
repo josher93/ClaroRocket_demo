@@ -1614,7 +1614,7 @@ public class Home extends AppCompatActivity implements FragmentFavoritos.Favorit
     //private ViewPager mPager;
     private static int currentPage = 0;
     private static final Integer[] slideImages = {R.drawable.banner1,
-            R.drawable.banner2, R.drawable.banner3, R.drawable.banner4};
+            R.drawable.banner2, R.drawable.banner3};
     private ArrayList<Integer> imagesArray = new ArrayList<Integer>();
 
     private void initializeSlider()
